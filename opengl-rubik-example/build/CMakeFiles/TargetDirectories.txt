@@ -1,0 +1,3 @@
+/workspace/opengl-rubik-example/build/CMakeFiles/rubik.dir
+/workspace/opengl-rubik-example/build/CMakeFiles/edit_cache.dir
+/workspace/opengl-rubik-example/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,1 @@
+g++-14 "CMakeFiles/triangle.dir/triangle-example.cpp.o" -o triangle  /usr/lib/x86_64-linux-gnu/libGL.so /usr/lib/x86_64-linux-gnu/libGLU.so -lglfw 

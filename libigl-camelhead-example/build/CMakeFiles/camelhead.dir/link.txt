@@ -1,0 +1,1 @@
+/usr/bin/c++ "CMakeFiles/camelhead.dir/camelhead-example.cpp.o" -o camelhead  /usr/lib/x86_64-linux-gnu/libglfw.so.3.3 _deps/glad-build/libglad.a -lGL 
