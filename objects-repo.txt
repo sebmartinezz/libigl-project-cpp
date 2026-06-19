@@ -1,0 +1,12 @@
+
+running container as:
+docker run -it --rm -v "${PWD}:/workspace" -e DISPLAY=192.168.1.20(mi ip):0 libiglproj
+
+.off repository:
+https://github.com/libigl/libigl-tutorial-data.git
+example bringing bunny:
+curl -L -O https://raw.githubusercontent.com/libigl/libigl-tutorial-data/master/bunny.off
+
+
+clearing cache:
+rm -rf *
