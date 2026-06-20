@@ -15,32 +15,31 @@ int main(int argc, char *argv[]) {
 
     igl::opengl::glfw::Viewer viewer;
     
-    // Ángulo de rotación inicial
+    //initial rotation
     float angulo = 0.0f;
 
-    // Registramos el callback para la animación continua
+    // registrar callback para anim continua
     viewer.callback_pre_draw = [&](igl::opengl::glfw::Viewer& v) -> bool {
-        // Incrementar el ángulo en cada fotograma
+        //incrementar angulo
         angulo += 0.02f; 
 
-        // Crear una matriz de rotación en el eje Y usando Eigen
+        //rot matrix eje y
         Eigen::Matrix3d rotacion;
         rotacion = Eigen::AngleAxisd(angulo, Eigen::Vector3d::UnitY());
 
-        // Multiplicar los vértices originales por la matriz de rotación
-        // V_rotado = V_original * R^T (por la disposición por filas de Eigen)
+        //rotar vertices
         Eigen::MatrixXd V_rotado = V_original * rotacion.transpose();
 
-        // Actualizar la malla en el visor en tiempo real
+        //actualizar malla en visor
         v.data().set_mesh(V_rotado, F);
 
-        // Retornar false para decirle a libigl que siga redibujando continuamente
+        //ret false para que libigl siga dibujando
         return false;
     };
 
-    // Cargar la malla inicial y activar la animación automática
+    // cargar malla y activar animacion auto
     viewer.data().set_mesh(V_original, F);
-    viewer.core().is_animating = true; // ¡Esto fuerza al visor a refrescarse sin parar!
+    viewer.core().is_animating = true;
 
     std::cout << "going" << std::endl;
     viewer.launch();

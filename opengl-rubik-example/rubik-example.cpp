@@ -58,7 +58,7 @@ int main() {
         return -1;
     }
 
-    GLFWwindow* window = glfwCreateWindow(800, 600, "Cubo 3D sin Variables Globales", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(800, 600, "cubito", NULL, NULL);
     if (!window) {
         glfwTerminate();
         return -1;
@@ -73,12 +73,11 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glLoadIdentity();
 
-        // Usamos los datos encapsulados localmente
+        // usar los datos encapsulados localmente
         glRotatef(miCuboEstado.rotacion, 1.0f, 1.0f, 0.5f);
 
         dibujarCubo(miCuboEstado);
 
-        // Modificación controlada dentro del ámbito del bucle principal
         miCuboEstado.rotacion += miCuboEstado.velocidadRotacion;
 
         glfwSwapBuffers(window);

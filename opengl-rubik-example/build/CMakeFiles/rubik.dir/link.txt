@@ -1,1 +1,0 @@
-g++-14 "CMakeFiles/rubik.dir/rubik-example.cpp.o" -o rubik  /usr/lib/x86_64-linux-gnu/libGL.so /usr/lib/x86_64-linux-gnu/libGLU.so -lglfw 

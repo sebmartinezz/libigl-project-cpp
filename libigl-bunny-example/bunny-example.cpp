@@ -7,7 +7,7 @@ int main() {
     Eigen::MatrixXd V; //vertices matrix (posiciones x, y, z)
     Eigen::MatrixXi F; //faces matrix (indices de los triangulos)
 
-    // cargar el camelhead.off
+    // cargar mesh
     std::string ruta = "bunny.off";
     if (!igl::readOFF(ruta, V, F)) {
         std::cerr << "Error: No se pudo encontrar o leer el archivo " << ruta << std::endl;

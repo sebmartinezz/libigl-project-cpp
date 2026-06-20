@@ -1,7 +1,0 @@
-/workspace/libigl-rotating-cow/build/CMakeFiles/cow.dir
-/workspace/libigl-rotating-cow/build/CMakeFiles/edit_cache.dir
-/workspace/libigl-rotating-cow/build/CMakeFiles/rebuild_cache.dir
-/workspace/libigl-rotating-cow/build/_deps/glad-build/CMakeFiles/glad-generate-files.dir
-/workspace/libigl-rotating-cow/build/_deps/glad-build/CMakeFiles/glad.dir
-/workspace/libigl-rotating-cow/build/_deps/glad-build/CMakeFiles/edit_cache.dir
-/workspace/libigl-rotating-cow/build/_deps/glad-build/CMakeFiles/rebuild_cache.dir

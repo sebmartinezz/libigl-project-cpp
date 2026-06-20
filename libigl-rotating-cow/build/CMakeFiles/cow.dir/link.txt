@@ -1,1 +1,0 @@
-/usr/bin/c++ "CMakeFiles/cow.dir/rotating-cow.cpp.o" -o cow  /usr/lib/x86_64-linux-gnu/libglfw.so.3.3 _deps/glad-build/libglad.a -lGL 

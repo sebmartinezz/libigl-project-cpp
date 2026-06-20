@@ -5,12 +5,12 @@ project(cowExample CXX)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# 1. Buscar Eigen y GLFW nativos del contenedor (Instalados al instante por apt)
+# find eigen and glfw
 find_package(Eigen3 REQUIRED)
 find_package(glfw3 REQUIRED)
 find_package(Threads REQUIRED)
 
-# 2. Descargar SOLO GLAD (Tarda 2 segundos, pesa nada)
+# download glad
 include(FetchContent)
 FetchContent_Declare(
   glad
@@ -19,17 +19,17 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(glad)
 
-# 3. Definir tu ejecutable
+# executable
 add_executable(cow rotating-cow.cpp)
 
-# 4. Pasar la ruta de los headers de libigl
+# libigl headers route
 target_include_directories(cow PRIVATE "/opt/libigl/include")
 
-# 5. Enlazar todo de forma limpia
+# link
 target_link_libraries(cow PRIVATE 
     Eigen3::Eigen
     glfw
-    glad           # El target de FetchContent
+    glad           # fetchcontent target
     Threads::Threads
     GL
 )

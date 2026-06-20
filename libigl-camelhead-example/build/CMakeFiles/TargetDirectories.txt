@@ -1,7 +1,0 @@
-/workspace/libigl-camelhead-example/build/CMakeFiles/camelhead.dir
-/workspace/libigl-camelhead-example/build/CMakeFiles/edit_cache.dir
-/workspace/libigl-camelhead-example/build/CMakeFiles/rebuild_cache.dir
-/workspace/libigl-camelhead-example/build/_deps/glad-build/CMakeFiles/glad-generate-files.dir
-/workspace/libigl-camelhead-example/build/_deps/glad-build/CMakeFiles/glad.dir
-/workspace/libigl-camelhead-example/build/_deps/glad-build/CMakeFiles/edit_cache.dir
-/workspace/libigl-camelhead-example/build/_deps/glad-build/CMakeFiles/rebuild_cache.dir
