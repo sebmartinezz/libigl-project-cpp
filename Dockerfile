@@ -40,7 +40,7 @@ RUN curl -Lo /tmp/lazygit.tar.gz \
 # clone headers from libigl
 RUN git clone --depth 1 https://github.com/libigl/libigl.git /opt/libigl
 
-# set working directory
+# set working directory ola
 WORKDIR /workspace
 
 # default command
