@@ -19,8 +19,13 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(glad)
 
+set(MODEL_DIR "${CMAKE_SOURCE_DIR}/../../models")
 # executable
 add_executable(cow rotating-cow.cpp)
+target_compile_definitions(cow PRIVATE
+    MODEL_DIR="${MODEL_DIR}"
+)
+
 
 # libigl headers route
 target_include_directories(cow PRIVATE "/opt/libigl/include")

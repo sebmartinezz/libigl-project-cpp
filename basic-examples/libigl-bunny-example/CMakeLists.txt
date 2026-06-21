@@ -19,8 +19,13 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(glad)
 
+set(MODEL_DIR "${CMAKE_SOURCE_DIR}/../../models")
 # ejecutable
 add_executable(bunny bunny-example.cpp)
+target_compile_definitions(bunny PRIVATE
+    MODEL_DIR="${MODEL_DIR}"
+)
+
 
 # libigl headers route
 target_include_directories(bunny PRIVATE "/opt/libigl/include")

@@ -7,9 +7,12 @@ int main(int argc, char *argv[]) {
     Eigen::MatrixXd V_original;
     Eigen::MatrixXi F;
 
+    std::string path = std::string(MODEL_DIR) + "/cow.off";
+
     std::cout << "cargando modelo" << std::endl;
-    if (!igl::readOFF("cow.off", V_original, F)) {
-        std::cerr << "error al cargar modelo" << std::endl;
+    
+    if (!igl::readOFF(path, V_original, F)) {
+        std::cerr << "error al cargar modelo: " << path << std::endl;
         return 1;
     }
 

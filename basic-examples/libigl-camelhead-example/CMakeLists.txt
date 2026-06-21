@@ -19,8 +19,13 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(glad)
 
+set(MODEL_DIR "${CMAKE_SOURCE_DIR}/../../models")
 # ejecutable
 add_executable(camelhead camelhead-example.cpp)
+target_compile_definitions(camelhead PRIVATE
+    MODEL_DIR="${MODEL_DIR}"
+)
+
 
 # libigl headers route
 target_include_directories(camelhead PRIVATE "/opt/libigl/include")

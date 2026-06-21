@@ -7,10 +7,11 @@ int main() {
     Eigen::MatrixXd V; //vertices matrix (posiciones x, y, z)
     Eigen::MatrixXi F; //faces matrix (indices de los triangulos)
 
+
     // cargar el camelhead.off
-    std::string ruta = "camelhead.off";
-    if (!igl::readOFF(ruta, V, F)) {
-        std::cerr << "Error: No se pudo encontrar o leer el archivo " << ruta << std::endl;
+    std::string path = std::string(MODEL_DIR) + "/camelhead.off";
+    if (!igl::readOFF(path, V, F)) {
+        std::cerr << "Error: No se pudo encontrar o leer el archivo " << path << std::endl;
         return -1;
     }
 
