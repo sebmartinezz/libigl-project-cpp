@@ -25,7 +25,7 @@ int main() {
         glClearColor(0.15f, 0.15f, 0.15f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        //triangulito
+        //triangulito xd
         glBegin(GL_TRIANGLES);
             glColor3f(1.0f, 0.0f, 0.0f); // Rojo
             glVertex2f(-0.5f, -0.5f);
