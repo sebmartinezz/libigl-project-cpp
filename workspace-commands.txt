@@ -13,3 +13,6 @@ curl -L -O https://raw.githubusercontent.com/libigl/libigl-tutorial-data/master/
 
 clearing cache:
 rm -rf *
+
+fresh compile (first build or rebuild):
+cmake --fresh -S . -B build && cmake --build build
