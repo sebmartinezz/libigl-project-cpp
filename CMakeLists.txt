@@ -44,7 +44,10 @@ endfunction()
 function(add_libigl_example NAME SOURCE) #añadir ejemplos de libigl
     add_executable(${NAME} ${SOURCE})
     target_compile_definitions(${NAME} PRIVATE MODEL_DIR="${MODEL_DIR}")
-    target_include_directories(${NAME} PRIVATE /opt/libigl/include)
+    target_include_directories(${NAME} PRIVATE
+        ${CMAKE_SOURCE_DIR}/include #añadir los includes del workspace
+        /opt/libigl/include
+    )
     target_link_libraries(${NAME} PRIVATE Eigen3::Eigen glfw glad GL)
 endfunction()
 
