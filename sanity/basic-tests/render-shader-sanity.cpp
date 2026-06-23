@@ -53,7 +53,7 @@ int main()
     glEnableVertexAttribArray(0);
 
     //shader PRIMERO VERT LUEGO FRAG AAAAAAAAAAA
-    Shader sanityshader (MODEL_DIR"/vert-shader/shader-test.vert", MODEL_DIR"/frag-shader/shader-test.frag");
+    Shader sanityshader (DATA_DIR"/vert-shader/shader-test.vert", DATA_DIR"/frag-shader/shader-test.frag");
 
     //loop
     while(!window_should_close(win)){

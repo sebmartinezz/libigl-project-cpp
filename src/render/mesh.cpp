@@ -4,18 +4,27 @@
 //constructor
 Mesh::Mesh(const Eigen::MatrixXf& V, const Eigen::MatrixXi& F)
 {
+    //inicializacion segura
+    VAO = 0;
+    VBO = 0;
+    EBO = 0;
+    uploaded = false;
+
     buildFromEigen(V, F); //traduce de libigl a estructura cpu
 }
 
-//destructor
+//destructor, usar ANTES de cerrar el conexto de opengl aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+//sino va a salir un seg fault
 Mesh::~Mesh()
 {
-    if (uploaded)
-    {
+    // FIX IMPORTANTE: NO DEPENDER SOLO DE uploaded
+    if (VAO == 0) {
+        return;
+    }
+        std::cout << "deleting VAO " << VAO << std::endl;
         glDeleteVertexArrays(1, &VAO);
         glDeleteBuffers(1, &VBO);
         glDeleteBuffers(1, &EBO); // elimina las vainas para que no se queden en gpu
-    }
 }
 
 //eigen to cpu buffers
@@ -32,43 +41,32 @@ void Mesh::buildFromEigen(const Eigen::MatrixXf& V, const Eigen::MatrixXi& F)
     // ...
 
     // vertices
-    positions.reserve(V.rows() * 3); //V.rows en eigen significa cuántos vértices tiene
+    positions.reserve(V.rows() * 3);
     colors.reserve(V.rows() * 3);
 
-    for (int ii = 0; ii < V.rows(); ii++){ //recorro cada vértice
+    for (int ii = 0; ii < V.rows(); ii++){
         positions.push_back(V(ii, 0));
         positions.push_back(V(ii, 1));
         positions.push_back(V(ii, 2));
-        //aplana los datos, queda positions = x0, y0, z0, x1, y1, z1, ...
 
-        // color por vértice, todos empiezan con color blanco
         colors.push_back(1.0f);
         colors.push_back(1.0f);
         colors.push_back(1.0f);
-        //queda colors = 1, 1, 1, ..
     }
-
-    //importante, estructura de F
-    // [0, 1, 2] ---- triangulo 0 tiene vertices 0, 1, 2
-    // [2, 1, 3] ---- triangulo 1 tiene vertices 2, 1, 3
-    // ...
-    // no son posiciones sino índices de V
 
     // faces (triangles)
     indices.reserve(F.rows() * 3);
 
-    for (int jj = 0; jj < F.rows(); jj++){ //recorro cada triángulo
+    for (int jj = 0; jj < F.rows(); jj++){
         indices.push_back(F(jj, 0));
         indices.push_back(F(jj, 1));
         indices.push_back(F(jj, 2));
-        //queda indices igual a F pero plano, ej indices = 0, 1, 2, 2, 1, 3
     }
 }
 
 //from curvature to color mapping
 void Mesh::setCurvatureColor(const Eigen::VectorXf& K)
 {
-    //a cada vertice le corresponde un k con la curvatura, eso me lo da igl
     if (K.size() != positions.size() / 3){
         std::cerr << "error, curvature size mismatch\n";
         return;
@@ -79,14 +77,11 @@ void Mesh::setCurvatureColor(const Eigen::VectorXf& K)
 
     for (int ii = 0; ii < K.size(); ii++)
     {
-        float t = (K(ii) - minK) / (maxK - minK + 1e-6f); //t en rango normalizado, +1e-ef evita div por 0
+        float t = (K(ii) - minK) / (maxK - minK + 1e-6f);
 
-        // colormap blue to red
-        colors[ii * 3 + 0] = t;         // r
-        colors[ii * 3 + 1] = 0.2f;       // g ta quieto
-        colors[ii * 3 + 2] = 1.0f - t;   // b
-
-        //colors es r, g, b, r, g, b, r, g, b, ..
+        colors[ii * 3 + 0] = t;
+        colors[ii * 3 + 1] = 0.2f;
+        colors[ii * 3 + 2] = 1.0f - t;
     }
 }
 
@@ -97,29 +92,25 @@ void Mesh::upload()
         return;
 
     setupGL(); //crea VAO VBO EBO, sube datos a gpu, define atributos de posicion, color, etc
-    //es la funcion de abajo
-    uploaded = true; //es un bool que me dice si ya se subio la mesh pa no volver a subirla
-}
 
+    uploaded = true;
+}
 
 //gpu setup VAO, VBO, EBO
 void Mesh::setupGL()
-{   //crea la rep de este mesh en gpu
+{
+    std::cout << "setupGL called\n";
 
-    std::vector<float> buffer; //array plano final que la gpu leerá
-    //buffer será [x, y, z, r, g, b,     x, y, z, r, g, b,     ...]
-
+    std::vector<float> buffer;
     buffer.reserve(positions.size() + colors.size());
 
     // interleaving position and color
     for (size_t ii = 0; ii < positions.size() / 3; ii++)
     {
-        // position, obtengo x, y, z
         buffer.push_back(positions[ii * 3 + 0]);
         buffer.push_back(positions[ii * 3 + 1]);
         buffer.push_back(positions[ii * 3 + 2]);
 
-        // color, obtengo r, g, b
         buffer.push_back(colors[ii * 3 + 0]);
         buffer.push_back(colors[ii * 3 + 1]);
         buffer.push_back(colors[ii * 3 + 2]);
@@ -130,51 +121,97 @@ void Mesh::setupGL()
     glGenBuffers(1, &VBO);
     glGenBuffers(1, &EBO);
 
-    glBindVertexArray(VAO); //todo lo que configure ahora se guarda en este VAO
+    glBindVertexArray(VAO);
 
     //VBO vertex data
-    glBindBuffer(GL_ARRAY_BUFFER, VBO); //modificaré el VBO
-    glBufferData(GL_ARRAY_BUFFER, //buffer de vertices
-        buffer.size() * sizeof(float), //indica el tamaño que necesito en vram de gpu
-        buffer.data(), //puntero crudo a memoria cpp
-        GL_STATIC_DRAW); //no cambia
- 
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER,
+        buffer.size() * sizeof(float),
+        buffer.data(),
+        GL_STATIC_DRAW);
 
-    //EBO inidices
+    //EBO indices
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER,
         indices.size() * sizeof(unsigned int),
         indices.data(),
         GL_STATIC_DRAW);
 
-    //queda VBO [x, y, z, r, g, b,       x, y, z, r, g, b,      ]
-    //queda EBO [0, 1, 2, 2, 1, 3]
-
-
-    //cómo leer el vbo??
     // ATTRIBUTE 0: position
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
-    //IMPORTANTE, configuré layout(location = 0) in vec3 aPos; para el vertshader
-    //3 floats, no normalizar, cuanto avanza la gpu para el siguiente vértice, donde empieza position dentro del bloque
-    glEnableVertexAttribArray(0); //activa atributo
-
+    glEnableVertexAttribArray(0);
 
     // ATTRIBUTE 1: color
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
-    //IMPORTANTE, configuré layout(location = 1) in vec3 aColor; para el vertshader
-    //mismo significado de entradas pero esta vez no agarra x, y, z sino r, g, b
     glEnableVertexAttribArray(1);
 
-    glBindVertexArray(0); //cierra config de VAO
+    glBindVertexArray(0);
 }
 
 //draw call
 void Mesh::draw() const
 {
-    glBindVertexArray(VAO); //para que lea el mesh
-    glDrawElements(GL_TRIANGLES, //cada 3 indices un triangulo
-                   indices.size(), //cuantos indices va a usar
-                   GL_UNSIGNED_INT, //tipo de datos de EBO
-                   0); //0 de offset
-    glBindVertexArray(0); //desactiva el bao
+    if (!uploaded)
+    {
+        std::cerr << "error, mesh not uploaded\n";
+        return;
+    }
+
+    glBindVertexArray(VAO);
+
+    glDrawElements(
+        GL_TRIANGLES,
+        (GLsizei)indices.size(), // FIX IMPORTANTE: CAST EXPLÍCITO
+        GL_UNSIGNED_INT,
+        0
+    );
+
+    glBindVertexArray(0);
+}
+
+Mesh::Mesh(Mesh&& other) noexcept
+{
+    VAO = other.VAO;
+    VBO = other.VBO;
+    EBO = other.EBO;
+    uploaded = other.uploaded;
+
+    positions = std::move(other.positions);
+    colors = std::move(other.colors);
+    indices = std::move(other.indices);
+
+    other.VAO = 0;
+    other.VBO = 0;
+    other.EBO = 0;
+    other.uploaded = false;
+}
+
+Mesh& Mesh::operator=(Mesh&& other) noexcept
+{
+    if (this != &other)
+    {
+        // cleanup actual
+        if (VAO != 0)
+        {
+            glDeleteVertexArrays(1, &VAO);
+            glDeleteBuffers(1, &VBO);
+            glDeleteBuffers(1, &EBO);
+        }
+
+        VAO = other.VAO;
+        VBO = other.VBO;
+        EBO = other.EBO;
+        uploaded = other.uploaded;
+
+        positions = std::move(other.positions);
+        colors = std::move(other.colors);
+        indices = std::move(other.indices);
+
+        other.VAO = 0;
+        other.VBO = 0;
+        other.EBO = 0;
+        other.uploaded = false;
+    }
+
+    return *this;
 }

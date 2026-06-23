@@ -19,9 +19,15 @@ FetchContent_Declare(
 )
 
 FetchContent_MakeAvailable(glad)
+get_target_property(GLAD_INCLUDE_DIR glad INTERFACE_INCLUDE_DIRECTORIES)
 
-include_directories(${CMAKE_SOURCE_DIR}/include) #añadir ese path
-set(MODEL_DIR "${CMAKE_SOURCE_DIR}/data") #para las mallas
+include_directories(
+    ${CMAKE_SOURCE_DIR}/include
+    ${glad_SOURCE_DIR}/include
+) #añadir esos path
+set(DATA_DIR "${CMAKE_SOURCE_DIR}/data")
+set(OBJ_MODEL_DIR "${CMAKE_SOURCE_DIR}/data/_obj-models") #para los modelos obj
+set(OFF_MODEL_DIR "${CMAKE_SOURCE_DIR}/data/_off-models") #para los modelos off
 
 function(opengl_example NAME SOURCE)
     add_executable(${NAME} ${SOURCE})
@@ -40,3 +46,4 @@ function(libigl_example NAME SOURCE)
 endfunction()
 
 add_subdirectory(sanity/basic-tests)
+add_subdirectory(demos)

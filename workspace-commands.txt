@@ -16,3 +16,9 @@ rm -rf *
 
 fresh compile (first build or rebuild):
 cmake --fresh -S . -B build && cmake --build build
+
+testing as:
+1 - core-window-sanity
+2 - render-renderer-sanity
+3 - render-shader-sanity
+4 - render-mesh-sanity

@@ -1,3 +1,5 @@
+//la idea es que le pasamos matrices de eigen con la info y las convierte en cosas que la gpu puede leer
+
 #pragma once
 
 #include<vector>
@@ -8,6 +10,15 @@ struct Mesh{ //un objeto que representa una malla 3d
     Mesh() = default;
 
     Mesh(const Eigen::MatrixXf& V, const Eigen::MatrixXi& F); //constructor con eigen
+    
+    //prohibe copias
+    Mesh(const Mesh&) = delete;
+    Mesh& operator=(const Mesh&) = delete;
+
+    //deja movimientos, necesario para return mesh
+    Mesh(Mesh&& other) noexcept;
+    Mesh& operator=(Mesh&& other) noexcept;
+
     ~Mesh(); //destructor
 
 
