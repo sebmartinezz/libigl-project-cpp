@@ -22,6 +22,7 @@ Shader::Shader(const std::string& vPath, const std::string& fPath) //los dos tip
     //une el vertex y fragment en ID
 
     check(ID, true, "PROGRAM");
+    std::cout<<"shader ok\n";
 
     glDeleteShader(v);
     glDeleteShader(f);
@@ -32,7 +33,27 @@ void Shader::use() const
 {
     glUseProgram(ID); //le dice a gl que este es el shader activo ahora
 }
+void Shader::setInt(const char* name, int value) const
+{
+    //uniform es variable de gpu
+    glUniform1i(glGetUniformLocation(ID, name), value);
+    //busca la locacion de la variable "name" en el shader "ID"
+    //pon el int "value" en esa location
+}
 
+void Shader::setFloat(const char* name, float value) const
+{
+    glUniform1f(glGetUniformLocation(ID, name), value);
+}
+
+void Shader::setMat4(const char* name, const float* mat) const
+{
+    glUniformMatrix4fv(glGetUniformLocation(ID, name), 1, GL_FALSE, mat);
+    //envia una matriz 4x4, re util para las animaciones y eso
+}
+
+
+//private functions
 std::string Shader::loadFile(const std::string& path)
 {
     std::ifstream file(path); //recibe la ubicacion del archivo
@@ -61,9 +82,27 @@ unsigned int Shader::compile(unsigned int type, const std::string& src) //compil
     glShaderSource(shader, 1, &csrc, nullptr); //envia el codigo a opengl
     //id, #strings, pointer to glsl, longitud automatica
 
+    
     glCompileShader(shader);//gl compila el glsl
 
-    check(shader, false, (type == GL_VERTEX_SHADER) ? "VERTEX" : "FRAGMENT");
+    //por si falla xdd
+    int success;
+    glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
+    
+    if (!success)
+    {
+        char log[1024];
+        glGetShaderInfoLog(shader, 1024, nullptr, log);
+
+        std::cerr << "-----------------------------\n";
+        std::cerr << "SHADER COMPILE ERROR: "
+                  << (type == GL_VERTEX_SHADER ? "VERTEX" : "FRAGMENT") //operador ternario, si es vertex imprime vertex y sino imprime fragment :)
+                  << "\n";
+        std::cerr << log << "\n";
+        std::cerr << "-----------------------------\n";
+
+        throw std::runtime_error("shader compilation failed");
+    }
 
     return shader; //devuelvo el numero que apunta al shader en la gpu
 }
@@ -91,23 +130,4 @@ void Shader::check(unsigned int obj, bool isProgram, const std::string& type)
             std::cerr << "PROGRAM ERROR:\n" << log << std::endl;
         }
     }
-}
-
-void Shader::setInt(const char* name, int value) const
-{
-    //uniform es variable de gpu
-    glUniform1i(glGetUniformLocation(ID, name), value);
-    //busca la locacion de la variable "name" en el shader "ID"
-    //pon el int "value" en esa location
-}
-
-void Shader::setFloat(const char* name, float value) const
-{
-    glUniform1f(glGetUniformLocation(ID, name), value);
-}
-
-void Shader::setMat4(const char* name, const float* mat) const
-{
-    glUniformMatrix4fv(glGetUniformLocation(ID, name), 1, GL_FALSE, mat);
-    //envia una matriz 4x4, re util para las animaciones y eso
 }
