@@ -1,6 +1,6 @@
 #include "render/renderer.h"
-#include <GLFW/glfw3.h>
 #include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 //asume que ya hay un contexto opengl activo
 
@@ -11,6 +11,7 @@ void renderer_init(){
 
 void renderer_set_viewport (int width, int height){
     glViewport(0, 0, width, height);
+    //las primeras dos son las coord x, y desde abajo a la izquierda para que dibuje jj
 }
 
 void renderer_clear(float r, float g, float b, float a){
