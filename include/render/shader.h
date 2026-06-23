@@ -6,7 +6,7 @@ struct Shader {
     unsigned int ID; //el programa en gpu
 
     //no es funcion sino constructor, construye shader
-    Shader(const std::string& vertexPath, const std::string& fragmentPath); 
+    Shader(const std::string& vertexPath, const std::string& fragmentPath);
     //vert transforma los vertices a clip space
     //frag decide el color final de cada pixel
 

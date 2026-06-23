@@ -9,7 +9,7 @@ Shader::Shader(const std::string& vPath, const std::string& fPath) //los dos tip
 {
     std::string vSrc = loadFile(vPath);
     std::string fSrc = loadFile(fPath);
-    //leer los archivos de texto nomas, los combierte a string glsl y guarda en ram(lenguaje gpu)
+    //leer los archivos de texto nomas, los combierteh a string glsl y guarda en ram(lenguaje gpu)
 
     unsigned int v = compile(GL_VERTEX_SHADER, vSrc);
     unsigned int f = compile(GL_FRAGMENT_SHADER, fSrc);
