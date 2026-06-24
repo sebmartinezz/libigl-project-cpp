@@ -28,10 +28,10 @@ int main(){
 
         window_events();
 
-        renderer_clear(
-            0.1f, //la f para decirle que es un float, no un double
-            0.2f,
-            0.3f,
+        renderer_clear(//la f para decirle que es un float
+            1.0f, // rojo
+            0.4f, // verde
+            0.5f, // azul
             1.0f
         );
 
