@@ -57,7 +57,7 @@ void buildFromEigen(Mesh&mesh, const Eigen::MatrixXf& V, const Eigen::MatrixXi& 
         mesh.positions.push_back(V(ii, 1));
         mesh.positions.push_back(V(ii, 2));
 
-        mesh.colors.push_back(1.0f);
+        mesh.colors.push_back(1.0f); //llenamos colors de blanco por defecto xd
         mesh.colors.push_back(1.0f);
         mesh.colors.push_back(1.0f);
     }

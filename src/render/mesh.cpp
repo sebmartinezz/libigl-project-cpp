@@ -69,9 +69,9 @@ void Mesh::setupGL()
 
     // attribute 0: position
     glVertexAttribPointer(
-        0,
-        3,
-        GL_FLOAT,
+        0, //atributo 0
+        3, //tamaño de la vaina
+        GL_FLOAT, //son float
         GL_FALSE,
         6 * sizeof(float),
         (void*)0
