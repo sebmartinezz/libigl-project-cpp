@@ -1,11 +1,16 @@
 #include "geometry/curvature.h"
 #include <igl/gaussian_curvature.h>
+#include <igl/readOFF.h>
+#include <igl/readOBJ.h>
 #include <iostream>
 
-void GaussianCurvature(const Eigen::MatrixXd& V,
-                              const Eigen::MatrixXi& F,
-                              Eigen::VectorXf& K)
+void GaussianCurvature(const std::string& path,
+                        Eigen::VectorXf& K)
 {
+    Eigen::MatrixXd V;
+    Eigen::MatrixXi F;
+
+    igl::readOFF(path, V, F);
     igl::gaussian_curvature(V, F, K);
 }
 void setCurvatureColor(std::vector<float>& colors, const Eigen::VectorXf& K)

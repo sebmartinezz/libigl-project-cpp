@@ -7,12 +7,14 @@ struct Mesh{ // objeto que representa malla
     
     void upload();
     void draw() const;
+    void update_positions();
 
     ~Mesh();
 
 public:
 
     std::vector<float> positions;
+    std::vector<float> original_positions;
     std::vector<float> colors;
     std::vector<unsigned int> indices;
 

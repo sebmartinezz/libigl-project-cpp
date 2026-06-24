@@ -111,3 +111,25 @@ void Mesh::draw() const
 
     glBindVertexArray(0);
 }
+void Mesh::update_positions()
+{
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+
+    int N = positions.size() / 3;
+
+    for (int i = 0; i < N; i++)
+    {
+        float pos[3] = {
+            positions[i * 3 + 0],
+            positions[i * 3 + 1],
+            positions[i * 3 + 2]
+        };
+
+        glBufferSubData(
+            GL_ARRAY_BUFFER,
+            i * 6 * sizeof(float),   // offset dentro del interleaved buffer
+            3 * sizeof(float),       // SOLO posiciones
+            pos
+        );
+    }
+}

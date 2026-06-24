@@ -56,25 +56,19 @@ int main()
     renderer_set_viewport(window.width, window.height);
 
     Shader shader(
-        DATA_DIR "/vert-shader/bunny-demo.vert",
-        DATA_DIR "/frag-shader/bunny-demo.frag"
+        DATA_DIR "/vert-shader/curv-bunny-demo.vert",
+        DATA_DIR "/frag-shader/curv-bunny-demo.frag"
     );
 
     std::cout << "shader created\n";
     {
-        Mesh mesh = loadOFF(std::string(OFF_MODEL_DIR) + "/bunny.off");
-
+        Mesh mesh = loadOFF(std::string(OFF_MODEL_DIR) + "/bunny.off"); //creo el mesh con el .off
         std::cout << "mesh loaded\n";
 
-        Eigen::MatrixXd V;
-        Eigen::MatrixXi F;
-
-        igl::readOFF(std::string(OFF_MODEL_DIR) + "/bunny.off", V, F);
-
         Eigen::VectorXf K;
-        GaussianCurvature(V, F, K);
+        GaussianCurvature(std::string(OFF_MODEL_DIR) + "/bunny.off", K);
         setCurvatureColor(mesh.colors, K);
-        mesh.upload(); //uploadeando la mesh luego de llenar colors con la info de geometry
+        mesh.upload(); //uploadeando la mesh luego de llenar colors del struct mesh con la info de geometry
 
         std::cout << "geometry applied\n";
 
