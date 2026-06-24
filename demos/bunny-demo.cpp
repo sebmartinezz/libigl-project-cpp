@@ -3,7 +3,10 @@
 #include "render/shader.h"
 #include "render/mesh.h"
 #include "io/model-loader.h"
+#include "geometry/geometry.h"
 
+#include <igl/readOFF.h>
+#include <Eigen/Dense>
 #include <iostream>
 #include <cmath>
 
@@ -21,12 +24,10 @@ static void makeModel(float angle, float* M)
 static void makeView(float* V)
 {
     for (int i = 0; i < 16; i++) V[i] = 0;
-
     V[0] = 1; V[5] = 1; V[10] = 1; V[15] = 1;
-
-    //mover cámara
-    V[13] = -0.1f;
-    V[14] = -0.25f;
+    V[12] = 0.0f; //izq, derecha
+    V[13] = -0.1f; //arriba, abajo
+    V[14] = -0.3f; //acercar, alejar
 }
 
 static void makeProjection(float* P, float aspect)
@@ -34,7 +35,6 @@ static void makeProjection(float* P, float aspect)
     float fov = 45.0f * 3.1415926f / 180.0f;
     float n = 0.1f;
     float f = 100.0f;
-
     float t = tan(fov / 2.0f);
 
     for (int i = 0; i < 16; i++) P[i] = 0;
@@ -43,9 +43,7 @@ static void makeProjection(float* P, float aspect)
     P[5] = 1.0f / t;
     P[10] = -(f + n) / (f - n);
     P[11] = -1.0f;
-
     P[14] = -(2.0f * f * n) / (f - n);
-    P[15] = 0.0f;
 }
 
 int main()
@@ -57,17 +55,30 @@ int main()
     renderer_init();
     renderer_set_viewport(window.width, window.height);
 
-    Shader shader(DATA_DIR "/vert-shader/1demo.vert", DATA_DIR "/frag-shader/1demo.frag");
+    Shader shader(
+        DATA_DIR "/vert-shader/bunny-demo.vert",
+        DATA_DIR "/frag-shader/bunny-demo.frag"
+    );
 
     std::cout << "shader created\n";
     {
-        Mesh mesh = ModelLoader::loadOFF(std::string(OFF_MODEL_DIR) + "/bunny.off");
-        mesh.upload();
+        Mesh mesh = loadOFF(std::string(OFF_MODEL_DIR) + "/bunny.off");
+
         std::cout << "mesh loaded\n";
 
-        float Model[16];
-        float View[16];
-        float Projection[16];
+        Eigen::MatrixXd V;
+        Eigen::MatrixXi F;
+
+        igl::readOFF(std::string(OFF_MODEL_DIR) + "/bunny.off", V, F);
+
+        Eigen::VectorXf K;
+        GaussianCurvature(V, F, K);
+        setCurvatureColor(mesh.colors, K);
+        mesh.upload(); //uploadeando la mesh luego de llenar colors con la info de geometry
+
+        std::cout << "geometry applied\n";
+
+        float Model[16], View[16], Projection[16];
 
         makeView(View);
         makeProjection(Projection, 800.0f / 600.0f);
@@ -92,7 +103,7 @@ int main()
             window_swap_buffers(window);
             window_events();
         }
-    }
+    }//ejecuta destructor de mesh
     window_destroy(window);
 
     std::cout << "\n---- end bunny demo ----\n";

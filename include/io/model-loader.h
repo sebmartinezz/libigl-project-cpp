@@ -3,11 +3,8 @@
 
 #include <string>
 #include <Eigen/Dense>
-#include "../render/mesh.h"
+#include "render/mesh.h"
 
-class ModelLoader
-{
-public:
-    static Mesh loadOFF(const std::string& path);
-    static Mesh loadOBJ(const std::string& path);
-};
+Mesh loadOFF(const std::string& path); //me devuelve un objeto mesh
+Mesh loadOBJ(const std::string& path);
+void buildFromEigen(Mesh&mesh, const Eigen::MatrixXf& V, const Eigen::MatrixXi& F);

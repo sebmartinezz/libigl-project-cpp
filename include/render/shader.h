@@ -3,15 +3,13 @@
 #include <string>
 
 struct Shader {
-    unsigned int ID; //id del programa en gpu
+    unsigned int ID; //id opengl for gpu
 
     //no es funcion sino constructor, construye shader
-    Shader(const std::string& vertexPath, const std::string& fragmentPath);
-    //vert transforma los vertices a clip space
-    //frag decide el color final de cada pixel
+    Shader(const std::string& vertexPath, const std::string& fragmentPath); //vert and frag
 
-    //funcion del struct shader
-    void use() const; //const significa que no puede modificar al constructor
+
+    void use() const; //const - no modifica constructor
 
     void setInt(const char* name, int value) const;
     void setFloat(const char* name, float value) const;
