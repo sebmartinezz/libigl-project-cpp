@@ -24,6 +24,7 @@ int main()
 
     {    //LOAD MODEL
         Mesh mesh = ModelLoader::loadOFF(std::string(OFF_MODEL_DIR) + "/cow.off");
+        mesh.upload();
         std::cout << "mesh loaded\n";
 
         //loop

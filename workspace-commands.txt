@@ -22,3 +22,4 @@ testing as:
 2 - render-renderer-sanity
 3 - render-shader-sanity
 4 - render-mesh-sanity
+5 - io-model-loader-sanity
