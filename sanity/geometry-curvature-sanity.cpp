@@ -1,4 +1,4 @@
-#include "geometry/geometry.h"
+#include "geometry/curvature.h"
 #include "io/model-loader.h"
 #include "render/mesh.h"
 
@@ -8,7 +8,7 @@
 
 int main()
 {
-    std::cout << "\n---- geometry sanity ----\n";
+    std::cout << "\n---- curvature sanity ----\n";
 
     Eigen::MatrixXd V;
     Eigen::MatrixXi F;
@@ -47,6 +47,6 @@ int main()
                   << colors[ii * 3 + 2] << ")\n";
     }
 
-    std::cout << "---- end geometry sanity ----\n";
+    std::cout << "---- end curvature sanity ----\n";
     return 0;
 }

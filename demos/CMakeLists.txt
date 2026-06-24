@@ -2,7 +2,7 @@
 #BUNNY DEMO FOR COLORING CURVATURE
 add_executable(bunny-demo
     bunny-demo.cpp
-    ${CMAKE_SOURCE_DIR}/src/geometry/geometry.cpp
+    ${CMAKE_SOURCE_DIR}/src/geometry/curvature.cpp
     ${CMAKE_SOURCE_DIR}/src/render/mesh.cpp
     ${CMAKE_SOURCE_DIR}/src/render/shader.cpp
     ${CMAKE_SOURCE_DIR}/src/render/renderer.cpp

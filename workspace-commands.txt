@@ -23,3 +23,4 @@ testing as:
 3 - render-shader-sanity
 4 - render-mesh-sanity
 5 - io-model-loader-sanity
+6 - geometry-curvature-sanity

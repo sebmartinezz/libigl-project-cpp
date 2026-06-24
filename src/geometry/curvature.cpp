@@ -1,4 +1,4 @@
-#include "geometry/geometry.h"
+#include "geometry/curvature.h"
 #include <igl/gaussian_curvature.h>
 #include <iostream>
 

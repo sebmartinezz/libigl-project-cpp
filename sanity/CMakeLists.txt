@@ -102,26 +102,26 @@ target_include_directories(io-model-loader-sanity PRIVATE
     /opt/libigl/include
 )
 
-#GEOMETRY SANITY
-add_executable(geometry-geometry-sanity
-    geometry-geometry-sanity.cpp
-    ${CMAKE_SOURCE_DIR}/src/geometry/geometry.cpp
+#CURVATURE SANITY
+add_executable(geometry-curvature-sanity
+    geometry-curvature-sanity.cpp
+    ${CMAKE_SOURCE_DIR}/src/geometry/curvature.cpp
     ${CMAKE_SOURCE_DIR}/src/io/model-loader.cpp
     ${CMAKE_SOURCE_DIR}/src/render/mesh.cpp
 )
-target_link_libraries(geometry-geometry-sanity PRIVATE
+target_link_libraries(geometry-curvature-sanity PRIVATE
     glfw
     glad
     OpenGL::GL
     Eigen3::Eigen
 )
 
-target_compile_definitions(geometry-geometry-sanity PRIVATE ##adds model sirectory
+target_compile_definitions(geometry-curvature-sanity PRIVATE ##adds model sirectory
     DATA_DIR="${DATA_DIR}"
     OFF_MODEL_DIR="${OFF_MODEL_DIR}"
 )
 
-target_include_directories(geometry-geometry-sanity PRIVATE
+target_include_directories(geometry-curvature-sanity PRIVATE
     ${CMAKE_SOURCE_DIR}/include
     /opt/libigl/include
 )

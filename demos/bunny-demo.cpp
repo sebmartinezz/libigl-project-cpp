@@ -3,7 +3,7 @@
 #include "render/shader.h"
 #include "render/mesh.h"
 #include "io/model-loader.h"
-#include "geometry/geometry.h"
+#include "geometry/curvature.h"
 
 #include <igl/readOFF.h>
 #include <Eigen/Dense>
