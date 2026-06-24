@@ -73,8 +73,8 @@ void Mesh::setupGL()
         3, //tamaño de la vaina
         GL_FLOAT, //son float
         GL_FALSE,
-        6 * sizeof(float),
-        (void*)0
+        6 * sizeof(float), //tamaño total de un vertice
+        (void*)0 //0 de offset
     );
     glEnableVertexAttribArray(0);
 
