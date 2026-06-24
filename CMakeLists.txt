@@ -45,5 +45,5 @@ function(libigl_example NAME SOURCE)
     target_link_libraries(${NAME} PRIVATE glfw glad Eigen3::Eigen OpenGL::GL)
 endfunction()
 
-add_subdirectory(sanity/basic-tests)
+add_subdirectory(sanity)
 add_subdirectory(demos)
