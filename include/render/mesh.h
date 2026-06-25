@@ -9,6 +9,7 @@ struct Mesh{ // objeto que representa malla
     void draw() const;
     void update_positions();
 
+    Mesh()=default;
     ~Mesh();
 
 public:

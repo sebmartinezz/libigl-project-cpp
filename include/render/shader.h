@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <glm/glm.hpp>
 
 struct Shader {
     unsigned int ID; //id opengl for gpu
@@ -13,7 +14,9 @@ struct Shader {
 
     void setInt(const char* name, int value) const;
     void setFloat(const char* name, float value) const;
-    void setMat4(const char* name, const float* mat) const;
+    void setMat4(
+    const char* name,
+    const glm::mat4& mat) const;
 
 private:
     std::string loadFile(const std::string& path);

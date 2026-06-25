@@ -17,10 +17,13 @@ rm -rf *
 fresh compile:
 cmake --fresh -S . -B build && cmake --build build
 
-testing as:
-1 - core-window-sanity
-2 - render-renderer-sanity
-3 - render-shader-sanity
-4 - render-mesh-sanity
-5 - io-model-loader-sanity
-6 - geometry-curvature-sanity
+sanitizing as:
+1 - backend-sanity
+2 - core-window-sanity
+3 - render-renderer-sanity
+4 - render-shader-sanity
+5 - render-mesh-sanity
+6 - render-camera-sanity
+7 - io-model-loader-sanity
+8 - geometry-curvature-sanity
+9 - geometry-deformation-sanity

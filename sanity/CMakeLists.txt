@@ -1,4 +1,14 @@
+# BACKEND SANITY
+add_executable(backend-sanity
+    backend-sanity.cpp
+)
 
+target_link_libraries(backend-sanity PRIVATE
+    glfw
+    glad
+    OpenGL::GL
+    Eigen3::Eigen
+)
 
 # CORE WINDOW SANITY
 add_executable(core-window-sanity
@@ -24,19 +34,6 @@ target_link_libraries(render-renderer-sanity PRIVATE
     glfw
     glad
     OpenGL::GL
-)
-
-
-# BACKEND SANITY
-add_executable(backend-sanity
-    backend-sanity.cpp
-)
-
-target_link_libraries(backend-sanity PRIVATE
-    glfw
-    glad
-    OpenGL::GL
-    Eigen3::Eigen
 )
 
 #SHADER SANITY
@@ -76,32 +73,6 @@ target_compile_definitions(render-mesh-sanity PRIVATE ##adds model sirectory
     DATA_DIR="${DATA_DIR}"
 )
 
-#MODEL LOADER SANITY
-add_executable(io-model-loader-sanity
-    io-model-loader-sanity.cpp
-    ${CMAKE_SOURCE_DIR}/src/io/model-loader.cpp
-    ${CMAKE_SOURCE_DIR}/src/render/mesh.cpp
-    ${CMAKE_SOURCE_DIR}/src/render/shader.cpp
-    ${CMAKE_SOURCE_DIR}/src/render/renderer.cpp
-    ${CMAKE_SOURCE_DIR}/src/core/glfw-window.cpp
-)
-target_link_libraries(io-model-loader-sanity PRIVATE
-    glfw
-    glad
-    OpenGL::GL
-    Eigen3::Eigen
-)
-
-target_compile_definitions(io-model-loader-sanity PRIVATE ##adds model sirectory
-    DATA_DIR="${DATA_DIR}"
-    OFF_MODEL_DIR="${OFF_MODEL_DIR}"
-)
-
-target_include_directories(io-model-loader-sanity PRIVATE
-    ${CMAKE_SOURCE_DIR}/include
-    /opt/libigl/include
-)
-
 #CURVATURE SANITY
 add_executable(geometry-curvature-sanity
     geometry-curvature-sanity.cpp
@@ -126,10 +97,69 @@ target_include_directories(geometry-curvature-sanity PRIVATE
     /opt/libigl/include
 )
 
+
+#CAMERA SANITY
+add_executable(render-camera-sanity
+    render-camera-sanity.cpp
+    ${CMAKE_SOURCE_DIR}/src/render/camera.cpp
+    ${CMAKE_SOURCE_DIR}/src/render/mesh.cpp
+    ${CMAKE_SOURCE_DIR}/src/render/shader.cpp
+    ${CMAKE_SOURCE_DIR}/src/render/renderer.cpp
+    ${CMAKE_SOURCE_DIR}/src/core/glfw-window.cpp
+)
+
+
+target_link_libraries(render-camera-sanity PRIVATE
+    glfw
+    glad
+    OpenGL::GL
+    Eigen3::Eigen
+)
+
+
+target_compile_definitions(render-camera-sanity PRIVATE
+    DATA_DIR="${DATA_DIR}"
+    OFF_MODEL_DIR="${OFF_MODEL_DIR}"
+)
+
+
+target_include_directories(render-camera-sanity PRIVATE
+    ${CMAKE_SOURCE_DIR}/include
+    /opt/libigl/include
+)
+
+#MODEL LOADER SANITY
+add_executable(io-model-loader-sanity
+    io-model-loader-sanity.cpp
+    ${CMAKE_SOURCE_DIR}/src/io/model-loader.cpp
+    ${CMAKE_SOURCE_DIR}/src/render/camera.cpp
+    ${CMAKE_SOURCE_DIR}/src/render/mesh.cpp
+    ${CMAKE_SOURCE_DIR}/src/render/shader.cpp
+    ${CMAKE_SOURCE_DIR}/src/render/renderer.cpp
+    ${CMAKE_SOURCE_DIR}/src/core/glfw-window.cpp
+)
+target_link_libraries(io-model-loader-sanity PRIVATE
+    glfw
+    glad
+    OpenGL::GL
+    Eigen3::Eigen
+)
+
+target_compile_definitions(io-model-loader-sanity PRIVATE ##adds model sirectory
+    DATA_DIR="${DATA_DIR}"
+    OFF_MODEL_DIR="${OFF_MODEL_DIR}"
+)
+
+target_include_directories(io-model-loader-sanity PRIVATE
+    ${CMAKE_SOURCE_DIR}/include
+    /opt/libigl/include
+)
+
 #DEFORMATION SANITY
 add_executable(geometry-deformation-sanity
     geometry-deformation-sanity.cpp
     ${CMAKE_SOURCE_DIR}/src/geometry/deformation.cpp
+    ${CMAKE_SOURCE_DIR}/src/render/camera.cpp
     ${CMAKE_SOURCE_DIR}/src/render/mesh.cpp
     ${CMAKE_SOURCE_DIR}/src/render/shader.cpp
     ${CMAKE_SOURCE_DIR}/src/render/renderer.cpp

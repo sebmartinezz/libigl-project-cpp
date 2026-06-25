@@ -1,8 +1,10 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+
+#include "core/glfw-window.h"
+
 #include "render/shader.h"
 #include "render/renderer.h"
-#include "core/glfw-window.h"
 
 #include <iostream>
 

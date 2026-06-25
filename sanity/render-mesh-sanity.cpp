@@ -1,4 +1,5 @@
 #include "core/glfw-window.h"
+
 #include "render/renderer.h"
 #include "render/shader.h"
 #include "render/mesh.h"
@@ -49,6 +50,7 @@ int main()
 
         while (!window_should_close(window))
         {
+            mesh.update_positions();
             renderer_clear(0.1f, 0.1f, 0.1f, 1.0f);
             shader.use();
             mesh.draw();

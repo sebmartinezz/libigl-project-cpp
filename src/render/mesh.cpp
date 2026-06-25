@@ -45,8 +45,8 @@ void Mesh::setupGL()
         buffer.push_back(colors[ii * 3 + 1]);
         buffer.push_back(colors[ii * 3 + 2]);
     }
-
     //buffer sera el que lee gpu
+
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
     glGenBuffers(1, &EBO);
@@ -72,7 +72,7 @@ void Mesh::setupGL()
         0, //atributo 0
         3, //tamaño de la vaina
         GL_FLOAT, //son float
-        GL_FALSE,
+        GL_FALSE, //normalized?
         6 * sizeof(float), //tamaño total de un vertice
         (void*)0 //0 de offset
     );
@@ -113,23 +113,23 @@ void Mesh::draw() const
 }
 void Mesh::update_positions()
 {
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO); //le indica a las operaciones de buffer vayan con este vbo
 
-    int N = positions.size() / 3;
+    int N = positions.size() / 3; //cantidad de vertices
 
-    for (int i = 0; i < N; i++)
+    for (int jj= 0; jj< N; jj++)
     {
-        float pos[3] = {
-            positions[i * 3 + 0],
-            positions[i * 3 + 1],
-            positions[i * 3 + 2]
+        std::array<float, 3> pos = {
+        positions[jj * 3 + 0],
+        positions[jj * 3 + 1],
+        positions[jj * 3 + 2]
         };
 
         glBufferSubData(
-            GL_ARRAY_BUFFER,
-            i * 6 * sizeof(float),   // offset dentro del interleaved buffer
-            3 * sizeof(float),       // SOLO posiciones
-            pos
+            GL_ARRAY_BUFFER,    //tipo de buffer
+            jj * 6 * sizeof(float),  // offset dentro del interleaved buffer
+            3 * sizeof(float),  // tamaño posiciones
+            pos.data()  //datos
         );
     }
 }

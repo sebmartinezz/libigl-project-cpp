@@ -46,6 +46,23 @@ void window_events(){
     glfwPollEvents(); //le pide al OS que procese eventos
 }
 
+void window_get_mouse_position(Window& win, double& x, double& y) //le paso todo por referencia
+{
+    glfwGetCursorPos(
+        win.handle,
+        &x,
+        &y
+    );
+}
+
+bool window_mouse_pressed(Window& win){
+    return glfwGetMouseButton(
+        win.handle,
+        GLFW_MOUSE_BUTTON_LEFT
+    )
+    == GLFW_PRESS; //convierte a booleano para devolverlo je
+}
+
 void window_swap_buffers(Window&win){
     glfwSwapBuffers(win.handle);
     //intercambia los buffers, opengl usa dos buffers:
@@ -55,3 +72,4 @@ void window_destroy(Window&win){
     glfwDestroyWindow(win.handle); //destruye la ventana
     glfwTerminate(); //apaga glfw
 }
+

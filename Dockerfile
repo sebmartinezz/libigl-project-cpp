@@ -18,6 +18,7 @@ RUN apt update && apt install -y \
     libglu1-mesa-dev \
     mesa-utils \
     libglfw3-dev \
+    libglm-dev\
     xorg-dev \
     && rm -rf /var/lib/apt/lists/*
 

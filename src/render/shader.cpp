@@ -5,6 +5,9 @@
 #include <sstream>
 #include <iostream>
 
+
+#include <glm/gtc/type_ptr.hpp>
+
 Shader::Shader(const std::string& vPath, const std::string& fPath) //los dos tipos de paths de shader
 {
     std::string vSrc = loadFile(vPath);
@@ -46,10 +49,17 @@ void Shader::setFloat(const char* name, float value) const
     glUniform1f(glGetUniformLocation(ID, name), value);
 }
 
-void Shader::setMat4(const char* name, const float* mat) const
+void Shader::setMat4(
+    const char* name,
+    const glm::mat4& mat
+) const
 {
-    glUniformMatrix4fv(glGetUniformLocation(ID, name), 1, GL_FALSE, mat);
-    //envia una matriz 4x4, re util para las animaciones y eso
+    glUniformMatrix4fv(
+        glGetUniformLocation(ID,name),
+        1,
+        GL_FALSE,
+        glm::value_ptr(mat)
+    );
 }
 
 
