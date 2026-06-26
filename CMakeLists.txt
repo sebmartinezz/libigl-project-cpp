@@ -31,4 +31,4 @@ set(OFF_MODEL_DIR "${CMAKE_SOURCE_DIR}/data/_off-models") #para los modelos off
 
 
 add_subdirectory(sanity)
-#add_subdirectory(demos)
+add_subdirectory(demos)

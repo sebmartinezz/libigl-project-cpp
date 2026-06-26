@@ -6,7 +6,7 @@
 
 Camera::Camera()
 {
-    target = glm::vec3(0,0,0); //orbitará alrededor de este punto
+    target = glm::vec3(0,0,0); //orbitará alrededor del origen por defecto
     up = glm::vec3(0,1,0); //que direccion es arriba pa la cam
 
     //angulos de orbita
@@ -47,6 +47,12 @@ glm::mat4 Camera::projection_matrix() const //cómo proyecta en la ventana
 void Camera::set_distance(float d)
 {
     distance = d;
+    update_position();
+}
+void Camera::set_target(glm::vec3 t)
+{
+    target = t;
+    update_position();
 }
 void Camera::update_position()
 {

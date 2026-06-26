@@ -1,50 +1,18 @@
 #include "core/glfw-window.h"
+
 #include "render/renderer.h"
 #include "render/shader.h"
 #include "render/mesh.h"
+#include "render/camera.h"
+
 #include "io/model-loader.h"
+
 #include "geometry/curvature.h"
 
-#include <igl/readOFF.h>
 #include <Eigen/Dense>
 #include <iostream>
 #include <cmath>
 
-static void makeModel(float angle, float* M)
-{
-    float c = cos(angle);
-    float s = sin(angle);
-
-    M[0] = c;  M[1] = 0; M[2] = s;  M[3] = 0;
-    M[4] = 0;  M[5] = 1; M[6] = 0;  M[7] = 0;
-    M[8] = -s; M[9] = 0; M[10] = c; M[11] = 0;
-    M[12] = 0; M[13] = 0; M[14] = 0; M[15] = 1;
-}
-
-static void makeView(float* V)
-{
-    for (int i = 0; i < 16; i++) V[i] = 0;
-    V[0] = 1; V[5] = 1; V[10] = 1; V[15] = 1;
-    V[12] = 0.0f; //izq, derecha
-    V[13] = -0.1f; //arriba, abajo
-    V[14] = -0.3f; //acercar, alejar
-}
-
-static void makeProjection(float* P, float aspect)
-{
-    float fov = 45.0f * 3.1415926f / 180.0f;
-    float n = 0.1f;
-    float f = 100.0f;
-    float t = tan(fov / 2.0f);
-
-    for (int i = 0; i < 16; i++) P[i] = 0;
-
-    P[0] = 1.0f / (aspect * t);
-    P[5] = 1.0f / t;
-    P[10] = -(f + n) / (f - n);
-    P[11] = -1.0f;
-    P[14] = -(2.0f * f * n) / (f - n);
-}
 
 int main()
 {
@@ -59,8 +27,12 @@ int main()
         DATA_DIR "/vert-shader/curv-bunny-demo.vert",
         DATA_DIR "/frag-shader/curv-bunny-demo.frag"
     );
+    
+    std::cout<<"shader created";
 
-    std::cout << "shader created\n";
+    Camera camera;
+    camera.set_distance(0.3f);
+    camera.set_target(glm::vec3(-0.02, 0.1, 0));
     {
         Mesh mesh = loadOFF(std::string(OFF_MODEL_DIR) + "/bunny.off"); //creo el mesh con el .off
         std::cout << "mesh loaded\n";
@@ -68,29 +40,39 @@ int main()
         Eigen::VectorXf K;
         GaussianCurvature(std::string(OFF_MODEL_DIR) + "/bunny.off", K);
         setCurvatureColor(mesh.colors, K);
-        mesh.upload(); //uploadeando la mesh luego de llenar colors del struct mesh con la info de geometry
-
+        mesh.upload(); //uploadeando la mesh luego de llenar mesh.colors con la info de geometry
         std::cout << "geometry applied\n";
 
-        float Model[16], View[16], Projection[16];
+        double lastX = 0.0;
+        double lastY = 0.0;
 
-        makeView(View);
-        makeProjection(Projection, 800.0f / 600.0f);
-
-        float angle = 0.0f;
 
         while (!window_should_close(window))
         {
+            double xpos, ypos;
+
+            window_get_mouse_position(window, xpos, ypos);
+
+            double dx = xpos - lastX;
+            double dy = ypos - lastY;
+
+            lastX = xpos;
+            lastY = ypos;
+
+            if(window_mouse_pressed(window))
+            {
+                camera.orbit(dx, dy);
+            }
+
             renderer_clear(0.1f, 0.2f, 0.4f, 1.0f);
 
-            angle += 0.01f;
-            makeModel(angle, Model);
-
             shader.use();
+            glm::mat4 model = glm::mat4(1.0f);
 
-            shader.setMat4("Model", Model);
-            shader.setMat4("View", View);
-            shader.setMat4("Projection", Projection);
+             //.vert necesita esto
+            shader.setMat4("model", model); //objeto-mundo
+            shader.setMat4("view",camera.view_matrix());
+            shader.setMat4("projection", camera.projection_matrix());
 
             mesh.draw();
 

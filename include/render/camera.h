@@ -26,7 +26,8 @@ struct Camera{
     float yaw;
     float pitch;
     float distance;
-
+    
+    void set_target(glm::vec3 t);
     void set_distance(float d); //setear la distancia al centro
     void update_position();
     void orbit(float dx, float dy); //que orbite con el mouseee
