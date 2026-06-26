@@ -30,5 +30,12 @@ set(OBJ_MODEL_DIR "${CMAKE_SOURCE_DIR}/data/_obj-models") #para los modelos obj
 set(OFF_MODEL_DIR "${CMAKE_SOURCE_DIR}/data/_off-models") #para los modelos off
 
 
-add_subdirectory(sanity)
-add_subdirectory(demos)
+add_subdirectory(sanity/core)
+add_subdirectory(sanity/render)
+add_subdirectory(sanity/io)
+add_subdirectory(sanity/geometry)
+
+
+add_subdirectory(examples/curvature)
+#add_subdirectory(examples/deformation)
+#add_subdirectory(examples/both)

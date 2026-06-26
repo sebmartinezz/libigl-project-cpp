@@ -16,9 +16,9 @@
 
 int main()
 {
-    std::cout << "\n---- curvature screwdriver demo ----\n";
+    std::cout << "\n---- curvature planexy example ----\n";
 
-    Window window = window_create(800, 600, "curvature screwdriver demo");
+    Window window = window_create(800, 600, "curvature planexy example");
 
     renderer_init();
     renderer_set_viewport(window.width, window.height);
@@ -31,13 +31,13 @@ int main()
     std::cout<<"shader created";
 
     Camera camera;
-    camera.set_distance(0.15f);
+    camera.set_distance(4.0f);
     {
-        Mesh mesh = loadOFF(std::string(OFF_MODEL_DIR) + "/screwdriver.off"); //creo el mesh con el .off
+        Mesh mesh = loadOFF(std::string(OFF_MODEL_DIR) + "/planexy.off"); //creo el mesh con el .off
         std::cout << "mesh loaded\n";
 
         Eigen::VectorXf K;
-        GaussianCurvature(std::string(OFF_MODEL_DIR) + "/screwdriver.off", K);
+        GaussianCurvature(std::string(OFF_MODEL_DIR) + "/planexy.off", K);
         setCurvatureColor(mesh.colors, K);
         mesh.upload(); //uploadeando la mesh luego de llenar mesh.colors con la info de geometry
         std::cout << "geometry applied\n";
@@ -63,7 +63,7 @@ int main()
                 camera.orbit(dx, dy);
             }
 
-            renderer_clear(0.1f, 0.2f, 0.4f, 1.0f);
+            renderer_clear(0.5f, 0.5f, 0.5f, 1.0f);
 
             shader.use();
             glm::mat4 model = glm::mat4(1.0f);
@@ -81,7 +81,7 @@ int main()
     }//ejecuta destructor de mesh
     window_destroy(window);
 
-    std::cout << "\n---- end curvature screwdriver demo ----\n";
+    std::cout << "\n---- end curvature planexy example ----\n";
 
     return 0;
 }

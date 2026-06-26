@@ -1,0 +1,52 @@
+
+##coloring surfaces according to their curvature during continuous physical deformations using libigl
+
+github repo:
+https://github.com/sebmartinezz/libigl-project-cpp
+
+
+drive repo:
+https://drive.google.com/drive/folders/1ymkmy3yYDT-SRfTl61svm8XMh8n8oIXk?usp=sharing
+
+models repository:
+https://github.com/libigl/libigl-tutorial-data.git
+
+----------commands for windows powershell------------------------------------------------
+
+getting ip for Xlaunch:
+ipconfig
+information in IPv4
+
+running container as:
+docker run -it --rm -v "${PWD}:/workspace" -e DISPLAY=192.168.1.20:0 libiglproj
+(here, 192.168.1.20 is the info in IPv4)
+
+---- inside the container
+
+compiling as:
+cmake --fresh -S . -B build && cmake --build build
+
+bringing a model with curl:
+cd (model directory)
+curl -L -O https://raw.githubusercontent.com/libigl/libigl-tutorial-data/master/model.off
+
+----------------------------------------------------------------------------------------
+
+sanitizing modules in correct order:
+core:
+1 - backend-sanity
+2 - core-window-sanity
+render:
+3 - render-renderer-sanity
+4 - render-shader-sanity
+5 - render-mesh-sanity
+6 - render-camera-sanity
+io:
+7 - io-model-loader-sanity
+geometry:
+8 - geometry-curvature-sanity
+9 - geometry-deformation-sanity
+
+
+---------------------------------------------------------------------------------------
+
