@@ -16,9 +16,9 @@
 
 int main()
 {
-    std::cout << "\n---- curvature bunny demo ----\n";
+    std::cout << "\n---- curvature cow demo ----\n";
 
-    Window window = window_create(800, 600, "curvature bunny demo");
+    Window window = window_create(800, 600, "curvature cow demo");
 
     renderer_init();
     renderer_set_viewport(window.width, window.height);
@@ -31,14 +31,13 @@ int main()
     std::cout<<"shader created";
 
     Camera camera;
-    camera.set_distance(0.3f);
-    camera.set_target(glm::vec3(-0.02, 0.1, 0));
+    camera.set_distance(1.5f);
     {
-        Mesh mesh = loadOFF(std::string(OFF_MODEL_DIR) + "/bunny.off"); //creo el mesh con el .off
+        Mesh mesh = loadOFF(std::string(OFF_MODEL_DIR) + "/cow.off"); //creo el mesh con el .off
         std::cout << "mesh loaded\n";
 
         Eigen::VectorXf K;
-        GaussianCurvature(std::string(OFF_MODEL_DIR) + "/bunny.off", K);
+        GaussianCurvature(std::string(OFF_MODEL_DIR) + "/cow.off", K);
         setCurvatureColor(mesh.colors, K);
         mesh.upload(); //uploadeando la mesh luego de llenar mesh.colors con la info de geometry
         std::cout << "geometry applied\n";
@@ -82,7 +81,7 @@ int main()
     }//ejecuta destructor de mesh
     window_destroy(window);
 
-    std::cout << "\n---- end curvature bunny demo ----\n";
+    std::cout << "\n---- end curvature cow demo ----\n";
 
     return 0;
 }
