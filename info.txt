@@ -11,7 +11,7 @@ https://drive.google.com/drive/folders/1ymkmy3yYDT-SRfTl61svm8XMh8n8oIXk?usp=sha
 models repository:
 https://github.com/libigl/libigl-tutorial-data.git
 
-----------commands for windows powershell------------------------------------------------
+----------commands for windows powershell----------------------------------------------
 
 getting ip for Xlaunch:
 ipconfig
@@ -23,14 +23,14 @@ docker run -it --rm -v "${PWD}:/workspace" -e DISPLAY=192.168.1.20:0 libiglproj
 
 ---- inside the container
 
-compiling as:
+compiling our project as:
 cmake --fresh -S . -B build && cmake --build build
 
 bringing a model with curl:
 cd (model directory)
 curl -L -O https://raw.githubusercontent.com/libigl/libigl-tutorial-data/master/model.off
 
-----------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 
 sanitizing modules in correct order:
 core:

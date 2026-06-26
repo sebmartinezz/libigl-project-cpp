@@ -148,3 +148,33 @@ target_compile_definitions(curvature-cheburashka-example PRIVATE
     OFF_MODEL_DIR="${OFF_MODEL_DIR}"
     OBJ_MODEL_DIR="${OBJ_MODEL_DIR}"
 )
+
+#armadillo example
+add_executable(curvature-armadillo-example
+    curvature-armadillo-example.cpp
+    ${CMAKE_SOURCE_DIR}/src/geometry/curvature.cpp
+    ${CMAKE_SOURCE_DIR}/src/render/camera.cpp
+    ${CMAKE_SOURCE_DIR}/src/render/mesh.cpp
+    ${CMAKE_SOURCE_DIR}/src/render/shader.cpp
+    ${CMAKE_SOURCE_DIR}/src/render/renderer.cpp
+    ${CMAKE_SOURCE_DIR}/src/core/glfw-window.cpp
+    ${CMAKE_SOURCE_DIR}/src/io/model-loader.cpp
+)
+
+target_include_directories(curvature-armadillo-example PRIVATE
+    ${CMAKE_SOURCE_DIR}/include
+    /opt/libigl/include
+)
+
+target_link_libraries(curvature-armadillo-example PRIVATE
+    glfw
+    glad
+    OpenGL::GL
+    Eigen3::Eigen
+)
+
+target_compile_definitions(curvature-armadillo-example PRIVATE
+    DATA_DIR="${DATA_DIR}"
+    OFF_MODEL_DIR="${OFF_MODEL_DIR}"
+    OBJ_MODEL_DIR="${OBJ_MODEL_DIR}"
+)

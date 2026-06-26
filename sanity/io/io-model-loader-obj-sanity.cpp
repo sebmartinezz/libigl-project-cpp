@@ -11,9 +11,9 @@
 
 int main()
 {
-    std::cout << "\n---- model loader sanity ----\n";
+    std::cout << "\n---- model loader (obj) sanity ----\n";
 
-    Window window = window_create(800, 600, "model loader sanity");
+    Window window = window_create(800, 600, "model loader (obj) sanity");
     renderer_init();
 
     renderer_set_viewport(window.width, window.height);
@@ -26,7 +26,9 @@ int main()
     Camera camera; //constructor de Camera
     camera.set_distance(1.5f);
     {
-        Mesh mesh = loadOFF(std::string(OFF_MODEL_DIR) + "/cow.off");
+        Mesh mesh = loadOBJ(std::string(OBJ_MODEL_DIR) + "/armadillo.obj");
+        std::cout << "vertices: " << mesh.positions.size() << "\n";
+        std::cout << "indices: " << mesh.indices.size() << "\n";
         mesh.upload();
 
         std::cout << "mesh loaded\n";
@@ -68,7 +70,7 @@ int main()
 
     window_destroy(window);
 
-    std::cout << "---- end model loader sanity ----\n";
+    std::cout << "---- end model loader (obj) sanity ----\n";
 
     return 0;
 }
