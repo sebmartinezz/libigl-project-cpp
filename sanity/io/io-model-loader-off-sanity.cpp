@@ -26,7 +26,7 @@ int main()
     Camera camera; //constructor de Camera
     camera.set_distance(1.5f);
     {
-        Mesh mesh = loadOFF(std::string(OFF_MODEL_DIR) + "/cow.off");
+        Mesh mesh = load_model(std::string(OFF_MODEL_DIR) + "/cow.off");
         mesh.upload();
 
         std::cout << "mesh loaded\n";

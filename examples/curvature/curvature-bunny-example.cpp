@@ -34,7 +34,7 @@ int main()
     camera.set_distance(0.3f);
     camera.set_target(glm::vec3(-0.02, 0.1, 0));
     {
-        Mesh mesh = loadOFF(std::string(OFF_MODEL_DIR) + "/bunny.off"); //creo el mesh con el .off
+        Mesh mesh = load_model(std::string(OFF_MODEL_DIR) + "/bunny.off"); //creo el mesh con el .off
         std::cout << "mesh loaded\n";
 
         Eigen::VectorXf K;

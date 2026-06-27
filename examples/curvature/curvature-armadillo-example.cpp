@@ -36,15 +36,11 @@ int main()
     Camera camera;
     camera.set_distance(1.0f);
     {
-        Mesh mesh = loadOBJ(std::string(OBJ_MODEL_DIR) + "/armadillo.obj"); //creo el mesh con el .off
+        Mesh mesh = load_model(std::string(OBJ_MODEL_DIR) + "/armadillo.obj"); //creo el mesh con el .off
         std::cout << "mesh loaded\n";
 
         Eigen::VectorXf K;
-        Eigen::MatrixXd V;
-        Eigen::MatrixXi F;
-        igl::readOBJ(std::string(OBJ_MODEL_DIR) + "/armadillo.obj", V, F);
-        igl::gaussian_curvature(V, F, K);
-
+        GaussianCurvature(std::string(OBJ_MODEL_DIR)+"/armadillo.obj", K);
         setCurvatureColor(mesh.colors, K);
 
         mesh.upload(); //uploadeando la mesh luego de llenar mesh.colors con la info de geometry

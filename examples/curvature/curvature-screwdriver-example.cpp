@@ -33,7 +33,7 @@ int main()
     Camera camera;
     camera.set_distance(0.15f);
     {
-        Mesh mesh = loadOFF(std::string(OFF_MODEL_DIR) + "/screwdriver.off"); //creo el mesh con el .off
+        Mesh mesh = load_model(std::string(OFF_MODEL_DIR) + "/screwdriver.off"); //creo el mesh con el .off
         std::cout << "mesh loaded\n";
 
         Eigen::VectorXf K;

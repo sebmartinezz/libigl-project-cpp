@@ -2,37 +2,40 @@
 
 #include <igl/readOFF.h>
 #include <igl/readOBJ.h>
+
 #include <iostream>
+#include <filesystem>
 
-Mesh loadOFF (const std::string& path)
+Mesh load_model (const std::string& path)
 {
     Eigen::MatrixXd V;
     Eigen::MatrixXi F;
 
-    if (!igl::readOFF(path, V, F)) //igl::es para usar libigl
+    std::string ext=std::filesystem::path(path).extension().string();
+    bool loaded = false;
+    if (ext == ".off" || ext == ".OFF"){
+        loaded = igl::readOFF(path, V, F);
+    }
+    else if (ext == ".obj" || ext == ".OBJ"){
+        loaded = igl::readOBJ(path, V, F);
+    }
+    else{
+        std::cerr << "unsupported mesh format: " << ext << std::endl;
+        return Mesh();
+    }
+    if (!loaded)
     {
-        std::cerr << "error loading off model: " << path << std::endl;
+        std::cerr << "error loading model in this path: " << path << std::endl;
         return Mesh();
     }
     Mesh mesh;
     buildFromEigen(mesh, V.cast<float>(), F);
+
+    std::cout << "model in this path loaded: " << path << "\n"
+    << "vertices: " << V.rows() << "\n"
+    << "faces: " << F.rows() << "\n";
+
     return mesh;
-}
-Mesh loadOBJ(const std::string& path)
-{
-    Eigen::MatrixXd V;
-    Eigen::MatrixXi F;
-
-    if (!igl::readOBJ(path, V, F))
-    {
-        std::cerr << "error loading obj model: " << path << std::endl;
-        return Mesh();
-    }
-
-    Mesh mesh;
-    buildFromEigen(mesh, V.cast<float>(), F);
-    return mesh;
-
 }
 
 //eigen to cpu buffers

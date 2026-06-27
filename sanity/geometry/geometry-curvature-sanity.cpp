@@ -10,7 +10,7 @@ int main()
 
 
     std::string path = std::string(OFF_MODEL_DIR) + "/cow.off";
-    Mesh mesh = loadOFF(path);
+    Mesh mesh = load_model(path);
 
     std::cout << "mesh loaded\n";
 

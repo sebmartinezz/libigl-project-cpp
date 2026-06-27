@@ -33,7 +33,7 @@ int main()
     Camera camera;
     camera.set_distance(4.0f);
     {
-        Mesh mesh = loadOFF(std::string(OFF_MODEL_DIR) + "/planexy.off"); //creo el mesh con el .off
+        Mesh mesh = load_model(std::string(OFF_MODEL_DIR) + "/planexy.off"); //creo el mesh con el .off
         std::cout << "mesh loaded\n";
 
         Eigen::VectorXf K;
