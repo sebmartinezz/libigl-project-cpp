@@ -3,38 +3,20 @@
 
 #include <iostream>
 
-
 int main()
 {
     std::cout << "\n---- curvature sanity ----\n";
 
-
     std::string path = std::string(OFF_MODEL_DIR) + "/cow.off";
-    Mesh mesh = load_model(path);
 
+    Mesh mesh = load_model(path);
     std::cout << "mesh loaded\n";
 
     Eigen::VectorXf K;
-
-    GaussianCurvature(
-        path,
-        K
-    );
-
+    curvature(mesh, K);
     std::cout << "curvature computed\n";
 
-    if (K.size() != mesh.positions.size()/3)
-    {
-        std::cerr << "error: curvature size mismatch\n";
-        return -1;
-    }
-
-    std::vector<float> colors(K.size()*3);//tiene que ser de ese tamaño para llenarlo
-    setCurvatureColor(
-        colors,
-        K
-    );
-
+    map_curvature_color(mesh, K);
     std::cout << "color mapping done\n";
 
 
@@ -44,12 +26,8 @@ int main()
         << "K[" << ii << "] = "
         << K(ii)
         << " | RGB = ("
-        << colors[ii*3+0] << ", "
-        << colors[ii*3+1] << ", "
-        << colors[ii*3+2]
-        << ")\n";
+        << mesh.colors(ii,0) << ", "<< mesh.colors(ii,1) << ", "<< mesh.colors(ii,2)<< ")\n";
     }
-
 
     std::cout << "---- end curvature sanity ----\n";
 

@@ -30,8 +30,8 @@ int main()
     camera.set_distance(5.0f);
     {
         Mesh mesh;
-
-        mesh.positions = {
+        mesh.positions.resize(8, 3);
+        mesh.positions <<
             -0.5f,-1.0f,0.0f,
             0.5f,-1.0f,0.0f,
             0.5f,-1.0f,1.0f,
@@ -40,10 +40,10 @@ int main()
             -0.5f,1.0f,0.0f,
             0.5f,1.0f,0.0f,
             0.5f,1.0f,1.0f,
-            -0.5f,1.0f,1.0f
-        };
+            -0.5f,1.0f,1.0f;
 
-        mesh.colors = {
+        mesh.colors.resize(8, 3);
+        mesh.colors<<
             1,0,0,
             0,1,0,
             0,0,1,
@@ -52,10 +52,10 @@ int main()
             1,0,1,
             0,1,1,
             1,1,1,
-            0.5,0.5,0.5
-        };
+            0.5,0.5,0.5;
 
-        mesh.indices = {
+        mesh.indices.resize(12, 3);
+        mesh.indices<<
             0,1,2,
             2,3,0,
 
@@ -72,8 +72,7 @@ int main()
             7,3,2,
 
             3,7,4,
-            4,0,3
-        };
+            4,0,3;
 
         mesh.upload();
 
@@ -95,6 +94,7 @@ int main()
 
             if(window_mouse_pressed(window)){
                 camera.orbit(dx, dy);
+                std::cout<<"orbit: "<<dx<<" "<<dy<<"\n";
             }
 
             renderer_clear(

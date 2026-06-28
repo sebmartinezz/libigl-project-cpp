@@ -27,8 +27,6 @@ int main()
     camera.set_distance(1.5f);
     {
         Mesh mesh = load_model(std::string(OBJ_MODEL_DIR) + "/armadillo.obj");
-        std::cout << "vertices: " << mesh.positions.size() << "\n";
-        std::cout << "indices: " << mesh.indices.size() << "\n";
         mesh.upload();
 
         std::cout << "mesh loaded\n";

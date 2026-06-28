@@ -6,12 +6,11 @@ void Mesh::upload()
     if (uploaded){
         return;
     }
-    setupGL();
+    setup_gl();
     uploaded = true;
 }
 
-Mesh::~Mesh()
-{
+Mesh::~Mesh(){
     cleanup();
 }
 
@@ -25,71 +24,81 @@ void Mesh::cleanup()
     uploaded = false;
 }
 
-void Mesh::setupGL()
+void Mesh::setup_gl()
 {
-    std::cout << "setupGL called\n";
-
+    std::cout << "setupgl called\n";
     std::vector<float> buffer;
-    int N = (int)positions.size() / 3;
 
+    int N = positions.rows();
     buffer.reserve(N * 6);
 
     //interleaving positions and rgb
-    for (int ii = 0; ii < N; ii++)
+    for (int ii=0; ii<N; ii++)
     {
-        buffer.push_back(positions[ii * 3 + 0]);
-        buffer.push_back(positions[ii * 3 + 1]);
-        buffer.push_back(positions[ii * 3 + 2]);
+        // position
+        buffer.push_back(positions(ii,0));
+        buffer.push_back(positions(ii,1));
+        buffer.push_back(positions(ii,2));
 
-        buffer.push_back(colors[ii * 3 + 0]);
-        buffer.push_back(colors[ii * 3 + 1]);
-        buffer.push_back(colors[ii * 3 + 2]);
+        // color
+        buffer.push_back(colors(ii,0));
+        buffer.push_back(colors(ii,1));
+        buffer.push_back(colors(ii,2));
     }
-    //buffer sera el que lee gpu
 
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
+
+    glGenVertexArrays(1, &VAO); //crea 1 vertex array y guarda el ID en la dir de VAO
+    glGenBuffers(1, &VBO); //crea 1 buffer y guarda el ID en la direccion de memoria de VBO
     glGenBuffers(1, &EBO);
 
-    glBindVertexArray(VAO);
+    glBindVertexArray(VAO); //haz que este VAO sea el activo en opengl
 
     // VBO
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER,
+    glBufferData(
+        GL_ARRAY_BUFFER,
         buffer.size() * sizeof(float),
         buffer.data(),
-        GL_STATIC_DRAW);
+        GL_STATIC_DRAW
+    );
+
 
     // EBO
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER,
+
+    glBufferData(
+        GL_ELEMENT_ARRAY_BUFFER,
         indices.size() * sizeof(unsigned int),
         indices.data(),
-        GL_STATIC_DRAW);
+        GL_STATIC_DRAW
+    );
 
-    // attribute 0: position
+
+    // position
     glVertexAttribPointer(
         0, //atributo 0
-        3, //tamaño de la vaina
-        GL_FLOAT, //son float
-        GL_FALSE, //normalized?
-        6 * sizeof(float), //tamaño total de un vertice
+        3, //tamaño del atributo
+        GL_FLOAT, //tipo
+        GL_FALSE, //normalized
+        6 * sizeof(float), //tamaño de un vertice
         (void*)0 //0 de offset
     );
-    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(0); //activa el atributo 0
 
-    // attribute 1: color
+
+    // color
     glVertexAttribPointer(
         1,
         3,
         GL_FLOAT,
         GL_FALSE,
         6 * sizeof(float),
-        (void*)(3 * sizeof(float))
+        (void*)(3 * sizeof(float)) //3 de offset
     );
     glEnableVertexAttribArray(1);
 
-    glBindVertexArray(0);
+    //guardó todo eso en el VAO
+    glBindVertexArray(0); //terminamos de configurarlo, lo apagamos
 }
 
 void Mesh::draw() const
@@ -115,21 +124,40 @@ void Mesh::update_positions()
 {
     glBindBuffer(GL_ARRAY_BUFFER, VBO); //le indica a las operaciones de buffer vayan con este vbo
 
-    int N = positions.size() / 3; //cantidad de vertices
+    int N = positions.rows(); //cantidad de vertices
 
-    for (int jj= 0; jj< N; jj++)
+    for (int jj=0; jj<N; jj++)
     {
-        std::array<float, 3> pos = {
-        positions[jj * 3 + 0],
-        positions[jj * 3 + 1],
-        positions[jj * 3 + 2]
-        };
+        Eigen::Vector3f pos = positions.row(jj); //posicion del vertice jj
 
         glBufferSubData(
-            GL_ARRAY_BUFFER,    //tipo de buffer
-            jj * 6 * sizeof(float),  // offset dentro del interleaved buffer
-            3 * sizeof(float),  // tamaño posiciones
-            pos.data()  //datos
+            GL_ARRAY_BUFFER,
+            jj * 6 * sizeof(float), // offset dentro del interleaved buffer
+            3 * sizeof(float),      // tamaño de info posición
+            pos.data()
         );
     }
+    
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+void Mesh::update_colors()
+{
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+
+    int N = colors.rows(); //numero de vertices
+
+    for (int jj = 0; jj < N; jj++)
+    {
+        Eigen::Vector3f color = colors.row(jj); //rgb del vertice jj
+
+        glBufferSubData(
+            GL_ARRAY_BUFFER,
+            jj * 6 * sizeof(float) + 3 * sizeof(float), // saltar xyz
+            3 * sizeof(float), // tamaño de info rgb
+            color.data()
+        );
+    }
+    
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
 }

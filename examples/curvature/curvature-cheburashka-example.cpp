@@ -34,13 +34,14 @@ int main()
     camera.set_distance(1.0f);
     camera.set_target(glm::vec3(0.5, 0.5, 0.5));
     {
-        Mesh mesh = load_model(std::string(OFF_MODEL_DIR) + "/cheburashka.off"); //creo el mesh con el .off
+        Mesh mesh = load_model(std::string(OFF_MODEL_DIR) + "/cheburashka.off");
         std::cout << "mesh loaded\n";
 
         Eigen::VectorXf K;
-        GaussianCurvature(std::string(OFF_MODEL_DIR) + "/cheburashka.off", K);
-        setCurvatureColor(mesh.colors, K);
-        mesh.upload(); //uploadeando la mesh luego de llenar mesh.colors con la info de geometry
+        curvature (mesh, K);
+        map_curvature_color(mesh, K);
+
+        mesh.upload();
         std::cout << "geometry applied\n";
 
         double lastX = 0.0;
@@ -64,7 +65,7 @@ int main()
                 camera.orbit(dx, dy);
             }
 
-            renderer_clear(0.1f, 0.2f, 0.4f, 1.0f);
+            renderer_clear(0.08f, 0.08f, 0.08f, 1.0f);
 
             shader.use();
             glm::mat4 model = glm::mat4(1.0f);

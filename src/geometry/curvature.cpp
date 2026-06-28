@@ -1,62 +1,48 @@
 #include "geometry/curvature.h"
+
 #include <igl/gaussian_curvature.h>
-#include <igl/readOFF.h>
-#include <igl/readOBJ.h>
-
 #include <iostream>
-#include <filesystem>
 
-void GaussianCurvature(const std::string& path,
-                        Eigen::VectorXf& K)
+#include <cassert>
+
+void curvature(const Mesh&mesh, Eigen::VectorXf& K)
 {
-    Eigen::MatrixXd V;
-    Eigen::MatrixXi F;
-
-    std::string ext = std::filesystem::path(path).extension().string();
-
-    if (ext == ".off" || ext == ".OFF")
-    {
-        if (!igl::readOFF(path, V, F)){
-            std::cerr << "error loading OFF\n";
-            return;
-        }
-    }
-    else if (ext == ".obj" || ext == ".OBJ")
-    {
-        if (!igl::readOBJ(path, V, F))
-        {
-            std::cerr << "error loading OBJ\n";
-            return;
-        }
-    }
-    else{
-        std::cerr << "unsupported mesh format: " << ext << "\n";
-        return;
-    }
+    Eigen::MatrixXd V = mesh.positions.cast<double>();
+    Eigen::MatrixXi F = mesh.indices.cast<int>();
 
     igl::gaussian_curvature(V, F, K);
+    assert(K.size() == mesh.positions.rows());
 }
-void setCurvatureColor(std::vector<float>& colors, const Eigen::VectorXf& K)
-{   
-    //me genera el vector colors para mesh a partir del vector K que genera igl
+void map_curvature_color(Mesh& mesh, const Eigen::VectorXf& K)
+{
     int N = K.size();
 
-    if ((int)colors.size() != N * 3)
+    if(mesh.colors.rows() != N || mesh.colors.cols() != 3)
     {
         std::cerr << "error: colors size mismatch\n";
         return;
     }
 
-    float minK = K.minCoeff();
-    float maxK = K.maxCoeff();
-    float range = maxK - minK + 1e-6f;
+    float scale = K.cwiseAbs().mean() * 3.0f + 1e-6f;
 
-    for (int ii = 0; ii < N; ii++)
+    for(int ii = 0; ii < N; ii++)
     {
-        float t = (K(ii) - minK) / range;
+        float t = std::tanh(K(ii)/scale);
 
-        colors[ii * 3 + 0] = t;
-        colors[ii * 3 + 1] = 0.2f;
-        colors[ii * 3 + 2] = 1.0f - t;
+        if(t > 0)
+        {
+            // blanco a rojo
+            mesh.colors(ii,0) = 1.0f;
+            mesh.colors(ii,1) = 1.0f - t;
+            mesh.colors(ii,2) = 1.0f - t;
+        }
+        else
+        {
+            // blanco a morado azulado
+            float a = -t;
+            mesh.colors(ii,0) = 1.0f - 0.6f*a;
+            mesh.colors(ii,1) = 1.0f - 0.8f*a;
+            mesh.colors(ii,2) = 1.0f;
+        }
     }
 }

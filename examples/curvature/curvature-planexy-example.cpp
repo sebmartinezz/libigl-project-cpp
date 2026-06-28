@@ -33,13 +33,14 @@ int main()
     Camera camera;
     camera.set_distance(4.0f);
     {
-        Mesh mesh = load_model(std::string(OFF_MODEL_DIR) + "/planexy.off"); //creo el mesh con el .off
+        Mesh mesh = load_model(std::string(OFF_MODEL_DIR) + "/planexy.off");
         std::cout << "mesh loaded\n";
 
         Eigen::VectorXf K;
-        GaussianCurvature(std::string(OFF_MODEL_DIR) + "/planexy.off", K);
-        setCurvatureColor(mesh.colors, K);
-        mesh.upload(); //uploadeando la mesh luego de llenar mesh.colors con la info de geometry
+        curvature (mesh, K);
+        map_curvature_color(mesh, K);
+
+        mesh.upload();
         std::cout << "geometry applied\n";
 
         double lastX = 0.0;
@@ -63,7 +64,7 @@ int main()
                 camera.orbit(dx, dy);
             }
 
-            renderer_clear(0.5f, 0.5f, 0.5f, 1.0f);
+            renderer_clear(0.08f, 0.08f, 0.08f, 1.0f);
 
             shader.use();
             glm::mat4 model = glm::mat4(1.0f);

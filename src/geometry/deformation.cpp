@@ -1,33 +1,27 @@
 #include "geometry/deformation.h"
 #include <cmath>
 
-void twist (std::vector<float>&positions,
-            const std::vector<float>&original_positions,
-            float strength
-            )
+void twist(Mesh& mesh, float strength, float y0)
 {
-    size_t N = positions.size() / 3;
+    int N = mesh.positions.rows(); //vertices
 
-
-    for(size_t i = 0; i < N; i++)
+    for(int ii = 0; ii < N; ii++)
     {
-        float x = original_positions[i*3 + 0];
-        float y = original_positions[i*3 + 1];
-        float z = original_positions[i*3 + 2];
+        float x = mesh.original_positions(ii,0);
+        float y = mesh.original_positions(ii,1);
+        float z = mesh.original_positions(ii,2);
 
+        float y_rel = y - y0;
 
         float max_angle = M_PI * 0.5f;
-        float envelope = 1.0f / (1.0f + y*y); // o gaussiana
-        float angle = max_angle * envelope * std::sin(strength * y);
+        float envelope = 1.0f / (1.0f + y_rel*y_rel);
+        float angle = max_angle * envelope * std::sin(strength * y_rel);
 
         float c = std::cos(angle);
         float s = std::sin(angle);
 
-
-        positions[i*3 + 0] = x*c - z*s;
-        positions[i*3 + 2] = x*s + z*c;
-
-        // y queda igual
-        positions[i*3 + 1] = y;
+        mesh.positions(ii,0) = x*c - z*s;
+        mesh.positions(ii,2) = x*s + z*c;
+        mesh.positions(ii,1) = y;
     }
 }

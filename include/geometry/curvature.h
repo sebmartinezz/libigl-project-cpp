@@ -1,10 +1,10 @@
 #pragma once
+#include "render/mesh.h"
+
 #include <Eigen/Dense>
-#include <vector>
 
 // calcula curvatura con libigl
-void GaussianCurvature(const std::string& path,
-                        Eigen::VectorXf& K);
+void curvature(const Mesh&mesh, Eigen::VectorXf& K);
 
 //convierte curvatura a color rgb
-void setCurvatureColor(std::vector<float>&colors, const Eigen::VectorXf& K);
+void map_curvature_color(Mesh&mesh, const Eigen::VectorXf& K);

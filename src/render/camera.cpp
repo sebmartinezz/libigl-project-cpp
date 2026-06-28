@@ -55,14 +55,13 @@ void Camera::set_target(glm::vec3 t)
     update_position();
 }
 void Camera::update_position()
-{
+{   //esfericas a cartesianas
     position.x = target.x + distance * std::cos(pitch) * std::sin(yaw);
     position.y = target.y + distance * std::sin(pitch);
     position.z = target.z + distance * std::cos(pitch) * std::cos(yaw);
 }
 void Camera::orbit(float dx, float dy) //necesitamos el mov del mouse en core
 {
-    std::cout << "orbit: " << dx << " " << dy <<"\n"; //movimiento horizontal y vertical del mouse
     float sensitivity = 0.005f;
 
     //modificamos los angulos segun el movimiento del mouse

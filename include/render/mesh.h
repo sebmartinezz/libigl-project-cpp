@@ -1,23 +1,30 @@
 #pragma once
 
-#include<vector>
+#include<Eigen/Dense>
+#include <vector> //para el buffer
 #include<glad/glad.h>
+#include <functional>
+
+using Matrixui = Eigen::Matrix<unsigned int, Eigen::Dynamic, 3, Eigen::RowMajor>;
+using Matrixf = Eigen::Matrix<float,Eigen::Dynamic, 3 ,Eigen::RowMajor>;
 
 struct Mesh{ // objeto que representa malla
     
     void upload();
     void draw() const;
+
     void update_positions();
+    void update_colors();
 
     Mesh()=default;
     ~Mesh();
 
 public:
 
-    std::vector<float> positions;
-    std::vector<float> original_positions;
-    std::vector<float> colors;
-    std::vector<unsigned int> indices;
+    Matrixf positions;
+    Matrixf original_positions;
+    Matrixf colors;
+    Matrixui indices;
 
     // objetos de gpu
     unsigned int VAO = 0; //vertex array object
@@ -27,6 +34,6 @@ public:
     bool uploaded = false;
 
 private:
-    void setupGL();
+    void setup_gl();
     void cleanup();
 };

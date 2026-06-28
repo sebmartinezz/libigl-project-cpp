@@ -31,22 +31,21 @@ int main()
     std::cout<<"shader created";
 
     Camera camera;
-    camera.set_distance(0.3f);
+    camera.set_distance(0.25f);
     camera.set_target(glm::vec3(-0.02, 0.1, 0));
     {
         Mesh mesh = load_model(std::string(OFF_MODEL_DIR) + "/bunny.off"); //creo el mesh con el .off
         std::cout << "mesh loaded\n";
 
         Eigen::VectorXf K;
-        GaussianCurvature(std::string(OFF_MODEL_DIR) + "/bunny.off", K);
-        setCurvatureColor(mesh.colors, K);
-        mesh.upload(); //uploadeando la mesh luego de llenar mesh.colors con la info de geometry
+        curvature (mesh, K);
+        map_curvature_color(mesh, K);
+
+        mesh.upload();
         std::cout << "geometry applied\n";
 
         double lastX = 0.0;
         double lastY = 0.0;
-
-
         while (!window_should_close(window))
         {
             double xpos, ypos;
@@ -64,7 +63,7 @@ int main()
                 camera.orbit(dx, dy);
             }
 
-            renderer_clear(0.1f, 0.2f, 0.4f, 1.0f);
+            renderer_clear(0.08f, 0.08f, 0.08f, 1.0f);
 
             shader.use();
             glm::mat4 model = glm::mat4(1.0f);
