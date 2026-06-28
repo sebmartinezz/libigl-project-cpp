@@ -51,3 +51,5 @@ geometry:
 
 ---------------------------------------------------------------------------------------
 
+orden color map (menos a más):
+morado - azul - verde - amarillo - naranja - rojo
