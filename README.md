@@ -134,8 +134,8 @@ Run the modules in the following order:
   - geometry-deformation-sanity
 
 ## Links
-[GitHub - Repository](https://github.com/sebmartinezz/libigl-project-cpp)
-[Drive - Repository](https://drive.google.com/drive/folders/1ymkmy3yYDT-SRfTl61svm8XMh8n8oIXk?usp=sharing)
+[GitHub - Repository](https://github.com/sebmartinezz/libigl-project-cpp)  
+[Drive - Repository](https://drive.google.com/drive/folders/1ymkmy3yYDT-SRfTl61svm8XMh8n8oIXk?usp=sharing)  
 [Models - Repository](https://github.com/libigl/libigl-tutorial-data.git)
 
 ## Additional Information
