@@ -106,7 +106,7 @@ Replace 192.168.1.20 with your actual IPv4 address.
 (TODO)
 
 ## Compilation
-Inside the workspace:
+From the project root directory:
 ```bash
 mkdir build
 cmake --fresh -S . -B build && cmake --build build
