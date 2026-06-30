@@ -94,7 +94,7 @@ This creates a Docker image named `libiglproj` containing all required dependenc
 
 ### Running the container (Windows PowerShell)
 Make sure Docker and the X server are both running before launching the container.  
-First, get the IP address for the X server using ipconfig, then run:
+First, get the IP address for the X server using `ipconfig`, then run:
 
 ```powershell
 docker run -it --rm -v "${PWD}:/workspace" -e DISPLAY=192.168.1.20:0 libiglproj
