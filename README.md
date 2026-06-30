@@ -1,10 +1,11 @@
 
 # Dynamic Curvature Visualization on 3D Meshes Using Libigl and OpenGL
 
+## About
 This project presents a system for coloring three-dimensional models based on their curvature during continuous physical deformations, integrating a custom OpenGL-based mini graphics engine for the real-time loading, processing, deformation, and visualization of 3D models from the public libigl repository.  
-Libigl is primarily used for geometric mesh processing and model loading, while the engine handles scene abstraction, graphics resource management, geometry updates during deformation, and visualization, managing the communication between the CPU and the GPU through the rendering pipeline.
+Libigl is primarily used for geometric mesh processing and model loading, while the engine handles scene abstraction, graphics resource management, geometry updates during deformation and visualization, managing the communication between the CPU and the GPU through the rendering pipeline.
 
-## Project Structure
+## Structure
 The project is organized into modular components:
 
 ```
@@ -113,7 +114,7 @@ cmake --fresh -S . -B build && cmake --build build
 
 Run `mkdir build` only once.
 
-## Running Sanity Checks
+## Sanity Checks
 Run the modules in the following order:
 
 - Core
@@ -134,6 +135,7 @@ Run the modules in the following order:
   - geometry-deformation-sanity
 
 ## Links
+
 [GitHub - Repository](https://github.com/sebmartinezz/libigl-project-cpp)  
 [Drive - Repository](https://drive.google.com/drive/folders/1ymkmy3yYDT-SRfTl61svm8XMh8n8oIXk?usp=sharing)  
 [Models - Repository](https://github.com/libigl/libigl-tutorial-data.git)
@@ -142,7 +144,7 @@ Run the modules in the following order:
 
 ### Curvature Color Map
 The color map represents increasing curvature values:  
-`Purple → Blue → Green → Yellow → Orange → Red`
+`Purple (lower) → Blue → Green → Yellow → Orange → Red (higher)`
 
 ### Download models from the libigl tutorial dataset:
 ```bash
