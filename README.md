@@ -45,34 +45,34 @@ The project is organized into modular components:
     └── frag-shader/
 ```
 
-The src/ and sanity/ directories follow the same module organization defined in include/, with corresponding implementations and tests for each engine component.
+The `src/` and `sanity/` directories follow the same module organization defined in `include/`, with corresponding implementations and tests for each engine component.
 
 ### Modules Overview
 
-- include/: Header files defining the engine modules.
-- src/: Source files implementing the `.h` files in include/.
-- sanity/: Tests for each module.
-- examples/: Example applications demonstrating curvature visualization, mesh deformation, and their interaction.
-- results/: Visualization results.
-- utilities/: External resources, such as models and shader files.
+- `include/`: Header files defining the engine modules.
+- `src/`: Source files implementing the `.h` files in include/.
+- `sanity/`: Tests for each module.
+- `examples/`: Example applications demonstrating curvature visualization, mesh deformation, and their interaction.
+- `results/`: Visualization results.
+- `utilities/`: External resources, such as models and shader files.
 
 ### Implementation Overview
 
-- Core Components
-  - glfw-window: Encapsulates window creation using GLFW, initializes the OpenGL context, loads OpenGL function pointers via GLAD, and manages the basic application loop and input/event handling.
+- **Core Components**
+  - `glfw-window`: Encapsulates window creation using `GLFW`, initializes the OpenGL context, loads OpenGL function pointers via `GLAD`, and manages the basic application loop and input/event handling.
 
-- Rendering Components
-  - renderer: Provides basic rendering operations, including OpenGL viewport configuration and framebuffer clearing.
-  - shader: Manages shader creation and usage, including loading vertex and fragment shader files, compiling shader programs, and passing data to shaders.
-  - mesh: Manages GPU representation of a 3D mesh, including OpenGL buffers (VAO, VBO, EBO) and vertex attribute setup. It stores geometry on the CPU using Eigen (positions, colors, indices), uploads it in an interleaved format, and supports dynamic updates of vertex positions and colors.
-  - camera: Implements an orbit (spherical) camera system around a fixed target. It maintains view and projection matrices using GLM, and supports mouse-driven orbital rotation via yaw/pitch angles. The camera position is computed from spherical coordinates.
+- **Rendering Components**
+  - `renderer`: Provides basic rendering operations, including OpenGL viewport configuration and framebuffer clearing.
+  - `shader`: Manages shader creation and usage, including loading vertex and fragment shader files, compiling shader programs, and passing data to shaders.
+  - `mesh`: Manages GPU representation of a 3D mesh, including OpenGL buffers (VAO, VBO, EBO) and vertex attribute setup. It stores geometry on the CPU using `Eigen` (positions, colors, indices), uploads it in an interleaved format, and supports dynamic updates of vertex positions and colors.
+  - `camera`: Implements an orbit (spherical) camera system around a fixed target. It maintains view and projection matrices using `GLM`, and supports mouse-driven orbital rotation via yaw/pitch angles. The camera position is computed from spherical coordinates.
 
-- IO Components
-  - model-loader: Loads mesh data from disk using libigl. Supports .off and .obj formats, converts the geometry into the engine’s internal Mesh representation, and handles basic error reporting and format validation.
+- **IO Components**
+  - `model-loader`: Loads mesh data from disk using `libigl`. Supports .off and .obj formats, converts the geometry into the engine’s internal `Mesh` representation, and handles basic error reporting and format validation.
 
-- Geometry Components
-  - curvature: Computes per-vertex curvature from an existing Mesh using libigl, extracting its geometry directly from the mesh’s Eigen-based representation. It maps scalar curvature values into vertex colors using a tanh transformation and stores the result back into the mesh color buffer for visualization.
-  - deformation: Provides geometric deformation operations on a mesh by directly modifying its vertex positions, producing dynamic shape changes that update the mesh in place for real-time visualization.
+- **Geometry Components**
+  - `curvature`: Computes per-vertex curvature from an existing `mesh` using `libigl`, extracting its geometry directly from the mesh’s Eigen-based representation. It maps scalar curvature values into vertex colors using *tanh scaling* and stores the result back into the mesh color buffer for visualization.
+  - `deformation`: Provides geometric deformation operations on a `mesh` by directly modifying its vertex positions, producing dynamic shape changes that update the mesh in place for real-time visualization.
 
 ## Requirements
 - Docker
@@ -93,14 +93,15 @@ docker build -t libiglproj .
 This creates a Docker image named `libiglproj` containing all required dependencies and the project environment.
 
 ### Running the container (Windows PowerShell)
-Make sure Docker and the X server are both running before launching the container.  
-First, get the IP address for the X server using `ipconfig`, then run:
+Make sure Docker and the X server are both running before launching the container.
+
+First, get the IPv4 address for the X server using `ipconfig`, then run:
 
 ```powershell
-docker run -it --rm -v "${PWD}:/workspace" -e DISPLAY=192.168.1.20:0 libiglproj
+docker run -it --rm -v "${PWD}:/workspace" -e DISPLAY=<IPv4>:0 libiglproj
 ```
 
-Replace 192.168.1.20 with your actual IPv4 address.
+Replace `<IPv4>` with your actual IPv4 address.
 
 ### Running the container (Linux Terminal)
 (TODO)
@@ -115,7 +116,7 @@ cmake --fresh -S . -B build && cmake --build build
 `cmake --fresh -S . -B build` configures the project from the source directory (.) and generates the build system inside build.  
 `cmake --build build` compiles the project using the generated configuration.
 
-After building, executables can be found inside build/.  
+After building, executables can be found inside build/
 Run the executables with:
 ```bash
 ./build/<category>/<subdir>/<executable>
@@ -129,23 +130,23 @@ For example:
 ```
 
 
-## Sanity Checks
-Run the modules in the following order:
+## Sanity Tests
+Run the sanity tests in the following order:
 
-- Core
+- **Core**
   - backend-sanity
   - core-window-sanity
 
-- Render
+- **Render**
   - render-renderer-sanity
   - render-shader-sanity
   - render-mesh-sanity
   - render-camera-sanity
 
-- IO
+- **IO**
   - io-model-loader-sanity
 
-- Geometry
+- **Geometry**
   - geometry-curvature-sanity
   - geometry-deformation-sanity
 
