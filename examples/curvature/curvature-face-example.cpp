@@ -12,9 +12,9 @@
 
 int main()
 {
-    std::cout << "\n---- curvature armadillo example ----\n";
+    std::cout << "\n---- curvature face example ----\n";
 
-    Window window = window_create(800,600,"curvature armadillo example");
+    Window window = window_create(800,600,"curvature face example");
 
     renderer_init();
     renderer_set_viewport(window.width,window.height);
@@ -27,9 +27,10 @@ int main()
     std::cout<<"shader created";
 
     Camera camera;
-    camera.set_distance(1.0f);
+    camera.set_distance(40.0f);
+    camera.set_target(glm::vec3(0.0, 165.0, 0.0));
     {
-        Mesh mesh = load_model(std::string(OBJ_MODEL_DIR)+"/armadillo.obj");
+        Mesh mesh = load_model(std::string(OBJ_MODEL_DIR)+"/face.obj");
         std::cout<<"mesh loaded\n";
 
         Eigen::VectorXf K;
@@ -74,7 +75,7 @@ int main()
 
     window_destroy(window);
 
-    std::cout<<"\n---- end curvature armadillo example ----\n";
+    std::cout<<"\n---- end curvature face example ----\n";
 
     return 0;
 }

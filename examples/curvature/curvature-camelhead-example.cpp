@@ -12,9 +12,9 @@
 
 int main()
 {
-    std::cout << "\n---- curvature armadillo example ----\n";
+    std::cout << "\n---- curvature camelhead example ----\n";
 
-    Window window = window_create(800,600,"curvature armadillo example");
+    Window window = window_create(800,600,"curvature camelhead example");
 
     renderer_init();
     renderer_set_viewport(window.width,window.height);
@@ -29,7 +29,7 @@ int main()
     Camera camera;
     camera.set_distance(1.0f);
     {
-        Mesh mesh = load_model(std::string(OBJ_MODEL_DIR)+"/armadillo.obj");
+        Mesh mesh = load_model(std::string(OFF_MODEL_DIR)+"/camelhead.off");
         std::cout<<"mesh loaded\n";
 
         Eigen::VectorXf K;
@@ -74,7 +74,7 @@ int main()
 
     window_destroy(window);
 
-    std::cout<<"\n---- end curvature armadillo example ----\n";
+    std::cout<<"\n---- end curvature camelhead example ----\n";
 
     return 0;
 }

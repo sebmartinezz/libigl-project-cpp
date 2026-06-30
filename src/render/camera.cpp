@@ -19,8 +19,8 @@ Camera::Camera()
     fov = 45.0f; //campo de vision literal el fov 45 grados
     aspect = 800.0f/600.0f; //aspect radio, debe coincidir con la ventana y con el render
     //planos de corte
-    near_plane = 0.1f;
-    far_plane = 100.0f;
+    near_plane = 0.001f;
+    far_plane = 10000.0f;
 }
 
 glm::mat4 Camera::view_matrix() const

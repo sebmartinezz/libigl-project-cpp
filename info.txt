@@ -1,6 +1,4 @@
 
-##coloring surfaces according to their curvature during continuous physical deformations using libigl
-
 github repo:
 https://github.com/sebmartinezz/libigl-project-cpp
 
