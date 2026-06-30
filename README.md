@@ -1,5 +1,5 @@
 
-# Dynamic Curvature Visualization on 3D Meshes Using Libigl and OpenGL
+# Dynamic Curvature Visualization of 3D Meshes Using Libigl and OpenGL
 
 ## About
 This project presents a system for coloring three-dimensional models based on their curvature during continuous physical deformations, integrating a custom OpenGL-based mini graphics engine for the real-time loading, processing, deformation, and visualization of 3D models from the public libigl repository.  
