@@ -101,7 +101,18 @@ First, get the IPv4 address for the X server using `ipconfig`, then run:
 docker run -it --rm -v "${PWD}:/workspace" -e DISPLAY=<IPv4>:0 libiglproj
 ```
 
-Replace `<IPv4>` with your actual IPv4 address.
+`--rm` automatically removes the container when it exits. This prevents unused stopped containers from accumulating.
+
+`-v "${PWD}:/workspace"` mounts the current host directory into the container:
+  - *`${PWD}`* refers to the current directory on the host machine.
+  - *`/workspace`* is the directory inside the container.
+
+This allows files edited on the host machine to be directly available inside the container and vice versa.
+
+`-e DISPLAY=<IPv4>:0` sets the DISPLAY environment variable inside the container, allowing graphical applications running inside Docker (such as OpenGL programs) to communicate with the host X server.
+
+`<IPv4>` should be replaced with your actual IPv4 address, obtained before.  
+:0 refers to the default display number.
 
 ### Running the container (Linux Terminal)
 (TODO)
