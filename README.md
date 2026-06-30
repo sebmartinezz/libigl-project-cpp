@@ -12,20 +12,9 @@ The project is organized into modular components:
 .
 ├── include/
 │   ├── core/
-│   │   └── glfw-window.h
-│   │
 │   ├── render/
-│   │   ├── renderer.h
-│   │   ├── shader.h
-│   │   ├── mesh.h
-│   │   └── camera.h
-│   │
 │   ├── io/
-│   │   └── model-loader.h
-│   │
 │   └── geometry/
-│       ├── curvature.h
-│       └── deformation.h
 │
 ├── src/
 │
@@ -61,7 +50,7 @@ The `src/` and `sanity/` directories follow the same module organization defined
 - **Core Components**
   - `glfw-window`: Encapsulates window creation using `GLFW`, initializes the OpenGL context, loads OpenGL function pointers via `GLAD`, and manages the basic application loop and input/event handling.
 
-- **Rendering Components**
+- **Render Components**
   - `renderer`: Provides basic rendering operations, including OpenGL viewport configuration and framebuffer clearing.
   - `shader`: Manages shader creation and usage, including loading vertex and fragment shader files, compiling shader programs, and passing data to shaders.
   - `mesh`: Manages GPU representation of a 3D mesh, including OpenGL buffers (VAO, VBO, EBO) and vertex attribute setup. It stores geometry on the CPU using `Eigen` (positions, colors, indices), uploads it in an interleaved format, and supports dynamic updates of vertex positions and colors.
@@ -171,7 +160,7 @@ Run the sanity tests in the following order to verify that each module works cor
 [OpenGL Khronos API](https://wikis.khronos.org/opengl/index.php?title=Category:Core_API_Reference)  
 [OpenGL functions](https://docs.gl/)  
 [Libigl library documentation and tutorial](https://libigl.github.io/)  
-[Libigl tutorial models](https://github.com/libigl/libigl-tutorial-data.git)
+[Models repository](https://github.com/libigl/libigl-tutorial-data.git)
 
 ## Additional Information
 
