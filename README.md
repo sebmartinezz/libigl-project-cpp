@@ -161,11 +161,17 @@ Run the sanity tests in the following order to verify that each module works cor
   - geometry-curvature-sanity
   - geometry-deformation-sanity
 
-## Links
+## Bibliography
 
-[GitHub - Repository](https://github.com/sebmartinezz/libigl-project-cpp)  
-[Drive - Repository](https://drive.google.com/drive/folders/1ymkmy3yYDT-SRfTl61svm8XMh8n8oIXk?usp=sharing)  
-[Models - Repository](https://github.com/libigl/libigl-tutorial-data.git)
+[project GitHub repository](https://github.com/sebmartinezz/libigl-project-cpp)  
+[project Drive repository](https://drive.google.com/drive/folders/1ymkmy3yYDT-SRfTl61svm8XMh8n8oIXk?usp=sharing)
+
+[GLFW documentation](https://www.glfw.org/docs/latest/)  
+[GLAD github repository](https://github.com/Dav1dde/glad?utm_source=chatgpt.com)  
+[OpenGL Khronos API](https://wikis.khronos.org/opengl/index.php?title=Category:Core_API_Reference)  
+[OpenGL functions](https://docs.gl/)  
+[Libigl library documentation and tutorial](https://libigl.github.io/)  
+[Libigl tutorial models](https://github.com/libigl/libigl-tutorial-data.git)
 
 ## Additional Information
 
