@@ -71,8 +71,8 @@ The `src/` and `sanity/` directories follow the same module organization defined
   - `model-loader`: Loads mesh data from disk using `libigl`. Supports .off and .obj formats, converts the geometry into the engine’s internal `Mesh` representation, and handles basic error reporting and format validation.
 
 - **Geometry Components**
-  - `curvature`: Computes per-vertex curvature from an existing `mesh` using `libigl`, extracting its geometry directly from the mesh’s Eigen-based representation. It maps scalar curvature values into vertex colors using *tanh scaling* and stores the result back into the mesh color buffer for visualization.
-  - `deformation`: Provides geometric deformation operations on a `mesh` by directly modifying its vertex positions, producing dynamic shape changes that update the mesh in place for real-time visualization.
+  - `curvature`: Computes per-vertex curvature from an existing `Mesh` using `libigl`, extracting its geometry directly from the mesh’s Eigen-based representation. It maps scalar curvature values into vertex colors using *tanh scaling* and stores the result back into the mesh color buffer for visualization.
+  - `deformation`: Provides geometric deformation operations on a `Mesh` by directly modifying its vertex positions, producing dynamic shape changes that update the mesh in place for real-time visualization.
 
 ## Requirements
 - Docker
