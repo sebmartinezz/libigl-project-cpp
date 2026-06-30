@@ -50,7 +50,7 @@ The `src/` and `sanity/` directories follow the same module organization defined
 ### Modules Overview
 
 - `include/`: Header files defining the engine modules.
-- `src/`: Source files implementing the `.h` files in include/.
+- `src/`: Source files implementing the `.h` files in `include/`.
 - `sanity/`: Tests for each module.
 - `examples/`: Example applications demonstrating curvature visualization, mesh deformation, and their interaction.
 - `results/`: Visualization results.
@@ -127,7 +127,7 @@ cmake --fresh -S . -B build && cmake --build build
 `cmake --fresh -S . -B build` configures the project from the source directory (.) and generates the build system inside build.  
 `cmake --build build` compiles the project using the generated configuration.
 
-After building, executables can be found inside build/
+After building, executables can be found inside build/  
 Run the executables with:
 ```bash
 ./build/<category>/<subdir>/<executable>
@@ -142,8 +142,8 @@ For example:
 
 
 ## Sanity Tests
-Run the sanity tests in the following order:
 
+Run the sanity tests in the following order to verify that each module works correctly:
 - **Core**
   - backend-sanity
   - core-window-sanity
