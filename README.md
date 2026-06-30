@@ -105,14 +105,29 @@ Replace 192.168.1.20 with your actual IPv4 address.
 ### Running the container (Linux Terminal)
 (TODO)
 
-## Compilation
+## Compilation and Execution
 From the project root directory:
 ```bash
 mkdir build
 cmake --fresh -S . -B build && cmake --build build
 ```
+`mkdir build` creates a separate directory for generated build files. **Run it only once**.  
+`cmake --fresh -S . -B build` configures the project from the source directory (.) and generates the build system inside build.  
+`cmake --build build` compiles the project using the generated configuration.
 
-Run `mkdir build` only once.
+After building, executables can be found inside build/.  
+Run the executables with:
+```bash
+./build/<category>/<subdir>/<executable>
+```
+where `<category>` can be sanity or examples.
+
+For example:
+```bash
+./build/sanity/render/render-camera-sanity
+./build/examples/curvature/curvature-cow-example
+```
+
 
 ## Sanity Checks
 Run the modules in the following order:
