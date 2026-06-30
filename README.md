@@ -107,6 +107,11 @@ This allows files edited on the host machine to be directly available inside the
 (TODO)
 
 ## Compilation and Execution
+Clone this repository:
+```bash
+git clone https://github.com/sebmartinezz/libigl-project-cpp
+```
+
 From the project root directory:
 ```bash
 mkdir build
