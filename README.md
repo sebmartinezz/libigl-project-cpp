@@ -63,7 +63,7 @@ This project provides a Docker environment with all required dependencies that e
 
 ## Compilation and Execution
 
-From the project root directory:
+From the project root directory (inside the Docker container):
 ```bash
 mkdir build
 cmake --fresh -S . -B build && cmake --build build
