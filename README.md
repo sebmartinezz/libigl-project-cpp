@@ -175,3 +175,7 @@ Developed by:
 - Reyes Amarís, Tomás Santiago - treyesa@unal.edu.co
 - Bautista Vivas, Elvis Alberto - ebautistav@unal.edu.co
 - Ortiz Salazar, Esteban - esortizs@unal.edu.co
+
+## License
+
+This project is licensed under the MIT license. See the [LICENCE](LICENSE) file for details
