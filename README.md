@@ -5,6 +5,14 @@
 This project presents a system for coloring three-dimensional models based on their curvature during continuous physical deformations, integrating a custom OpenGL-based mini graphics engine for the real-time loading, processing, deformation, and visualization of 3D models from the public libigl repository.  
 Libigl is primarily used for geometric mesh processing and model loading, while the engine handles scene abstraction, graphics resource management, geometry updates during deformation and visualization, managing the communication between the CPU and the GPU through the rendering pipeline.
 
+## Project Objective
+
+The objective of this project was to study and visualize geometric properties of deformable 3D meshes, focusing on curvature computation and mesh deformation processes.
+
+To achieve a deeper understanding of how geometric information is transformed into a visual representation, a custom modular rendering pipeline was developed. The system was designed as a set of independent modules (`core`, `render`, `io`, and `geometry`), allowing each stage of the process to be developed, tested, and analyzed separately while maintaining a clear connection between geometric processing and graphical visualization.
+
+This structure enabled the study of the complete workflow, from mesh representation and geometric operations to GPU-based rendering and the final visual output, providing insight into the interaction between computational geometry and graphics.
+
 ## Structure
 The project is organized into modular components:
 
@@ -47,7 +55,7 @@ The `results/`directory follows the same organization defined in `examples/`, wi
 - `results/`: Visualization results.
 - `utilities/`: External resources, such as models and shader files.
 
-See [architecture document](docs/architecture.md) for details about the modules in `include/` and `src/`.
+See [architecture document](docs/architecture.md) for details about the engine modules in `include/` and `src/`.
 
 ## Requirements
 - Docker
@@ -91,6 +99,22 @@ For example:
 
 The project includes sanity tests to verify each module independently.  
 See [sanity tests document](docs/sanity-tests.md) for details about sanity tests execution and expected outputs.
+
+## Results
+### Some Curvature Results
+
+<img src="results/curvature/cow.png" width="350">
+<img src="results/curvature/bunny.png" width="350">
+<img src="results/curvature/fertility.png" width="350">
+<img src="results/curvature/cheburashka.png" width="350">
+
+### Some Deformation Results
+
+(TODO)
+
+### Some Combined Results
+
+(TODO)
 
 ## Resources
 

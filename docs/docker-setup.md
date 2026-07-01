@@ -65,7 +65,7 @@ docker run -it --rm -v "${PWD}:/workspace" -e DISPLAY=<IPv4>:0 libiglproj
 
 Command breakdown:
 
-- `docker run` reates and starts a new container from the specified Docker image.
+- `docker run` creates and starts a new container from the specified Docker image.
 - `-it` runs the container in interactive mode with an attached terminal.
 
 - `--rm` automatically removes the container when it exits. This prevents unused stopped containers from accumulating.
