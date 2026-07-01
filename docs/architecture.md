@@ -51,7 +51,7 @@ OUTPUT
 
 Encapsulates window creation using `GLFW`, initializes the OpenGL context, loads OpenGL function pointers via `GLAD`, and manages the basic application loop and input/event handling.
 
-This module serves as the interface between the operating system and the rendering engine. During initialization, this module creates the internal `Window` object and the corresponding GLFW window resource, configures the OpenGL context, and loads OpenGL function pointers through `GLAD` to load the OpenGL function pointers provided by the graphics driver.
+During initialization, this module creates the internal `Window` object and the corresponding GLFW window resource, configures the OpenGL context, and loads OpenGL function pointers through `GLAD` to load the OpenGL function pointers provided by the graphics driver.
 
 In addition to context creation, it provides utility functions for common window operations such as event polling, buffer swapping, mouse position retrieval, mouse button state queries, and window destruction. By centralizing all GLFW-related functionality, the rest of the engine can interact with the window system through a small and consistent API without directly depending on GLFW calls.
 
@@ -194,7 +194,7 @@ Mesh geometry
 
 The color map represents increasing curvature values:  
 `Purple (lower curvature) -> Blue -> Green -> Yellow -> Orange -> Red (higher curvature)`  
-This module only modifies geometric attributes of the mesh and does **not** interact directly with OpenGL. The updated colors are later uploaded by the `Mesh` module and displayed by the rendering pipeline.
+This module only modifies geometric attributes of the mesh and does **not** interact directly with OpenGL. The updated colors are later uploaded by the `Render` module and displayed by the rendering pipeline.
 
 #### `deformation`
 
@@ -212,4 +212,4 @@ Original mesh positions
 ```
 The deformation uses the original vertex positions as the source geometry, preventing accumulated transformations when the operation is applied repeatedly. This allows the mesh to be animated or modified dynamically while maintaining a stable reference state.
 
-This module only handles geometric changes and remains independent from the rendering system. After the vertex positions are modified, the `Mesh` module is responsible for synchronizing the updated data with the GPU for visualization.
+This module only handles geometric changes and remains independent from the rendering system. After the vertex positions are modified, the `Render` module is responsible for synchronizing the updated data with the GPU for visualization.
