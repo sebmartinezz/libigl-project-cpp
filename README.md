@@ -38,7 +38,7 @@ The `src/` and `sanity/` directories follow the same module organization defined
 
 The `results/`directory follows the same organization defined in `examples/`, with corresponding visualization results.
 
-### Modules Overview
+### Project Overview
 
 - `include/`: Header files defining the engine modules.
 - `src/`: Source files implementing the `.h` files in `include/`.
@@ -47,7 +47,7 @@ The `results/`directory follows the same organization defined in `examples/`, wi
 - `results/`: Visualization results.
 - `utilities/`: External resources, such as models and shader files.
 
-See the [architecture document](docs/architecture.md) for details.
+See [architecture document](docs/architecture.md) for details about the modules in `include/` and `src/`.
 
 ## Requirements
 - Docker
@@ -59,7 +59,7 @@ See the [architecture document](docs/architecture.md) for details.
 
 ## Docker Setup
 
-This project provides a Docker environment with all required dependencies that ensures a consistent development environment across systems. See the [docker setup document](docs/docker-setup.md) for details.
+This project provides a Docker environment with all required dependencies that ensures a consistent development environment across systems. See [docker setup document](docs/docker-setup.md) for details about the Docker image and the launching of the container.
 
 ## Compilation and Execution
 
@@ -95,9 +95,9 @@ For example:
 ## Sanity Tests
 
 The project includes sanity tests to verify each module independently.  
-See the [sanity tests document](docs/sanity-tests.md) for details.
+See [sanity tests document](docs/sanity-tests.md) for details about sanity tests execution and expected outputs.
 
-## Project Resources
+## Resources
 
 [project GitHub repository](https://github.com/sebmartinezz/libigl-project-cpp)  
 [project Drive repository](https://drive.google.com/drive/folders/1ymkmy3yYDT-SRfTl61svm8XMh8n8oIXk?usp=sharing)
