@@ -116,24 +116,24 @@ See [sanity tests document](docs/sanity-tests.md) for details about sanity tests
 ### Some Curvature Results
 
 <div style="display:flex; gap:10px;">
-  <img src="results/curvature/curv-cow.png" width="45%">
-  <img src="results/curvature/curv-bunny.png" width="45%">
+  <img src="results/curvature/curv-cow.png" width="50%">
+  <img src="results/curvature/curv-bunny.png" width="50%">
 </div>
 <div style="display:flex; gap:10px;">
-  <img src="results/curvature/curv-fertility.png" width="45%">
-  <img src="results/curvature/curv-cheburashka.png" width="45%">
+  <img src="results/curvature/curv-fertility.png" width="50%">
+  <img src="results/curvature/curv-cheburashka.png" width="50%">
 </div>
 
 ### Some Deformation Results
 
 <div style="display:flex; gap:10px;">
-  <img src="results/deformation/gifs/def-cow-gif.gif" width="45%">
+  <img src="results/deformation/gifs/def-cow-gif.gif" width="50%">
 </div>
 
 ### Some Combined Results
 
 <div style="display:flex; gap:10px;">
-  <img src="results/combined/gifs/comb-cow-gif.gif" width="45%">
+  <img src="results/combined/gifs/comb-cow-gif.gif" width="50%">
 </div>
 
 ## Resources
