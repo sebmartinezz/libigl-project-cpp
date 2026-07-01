@@ -105,7 +105,8 @@ See the [sanity tests document](docs/sanity-tests.md) for details.
 [OpenGL Khronos API](https://wikis.khronos.org/opengl/index.php?title=Category:Core_API_Reference)  
 [OpenGL functions](https://docs.gl/)  
 [Libigl library documentation and tutorial](https://libigl.github.io/)  
-[Models repository](https://github.com/libigl/libigl-tutorial-data.git)
+[Models repository](https://github.com/libigl/libigl-tutorial-data.git)  
+[Tanh Scaling](https://medium.com/ai-enthusiast/mastering-tanh-a-deep-dive-into-balanced-activation-for-machine-learning-4734ec147dd9)
 
 ## Authors
 
