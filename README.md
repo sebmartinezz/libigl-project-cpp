@@ -35,11 +35,14 @@ The project is organized into modular components:
 │
 ├── results/
 │
-└── utilities/
-    ├── _obj-models/
-    ├── _off-models/
-    ├── vert-shader/
-    └── frag-shader/
+├──  utilities/
+│   ├── _obj-models/
+│   ├── _off-models/
+│   ├── vert-shader/
+│   └── frag-shader/
+│
+└── docs/
+
 ```
 
 The `src/` and `sanity/` directories follow the same module organization defined in `include/`, with corresponding implementations and tests for each engine component.
@@ -54,6 +57,7 @@ The `results/`directory follows the same organization defined in `examples/`, wi
 - `examples/`: Example applications demonstrating curvature visualization, mesh deformation, and their interaction.
 - `results/`: Visualization results.
 - `utilities/`: External resources, such as models and shader files.
+- `docs/`: Contains the technical documentation of the project, including the initial proposal, software architecture description, environment setup instructions, and module validation procedures.
 
 See [architecture document](docs/architecture.md) for details about the engine modules in `include/` and `src/`.
 
