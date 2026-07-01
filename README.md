@@ -63,11 +63,6 @@ This project provides a Docker environment with all required dependencies that e
 
 ## Compilation and Execution
 
-Clone this repository:
-```bash
-git clone https://github.com/sebmartinezz/libigl-project-cpp
-```
-
 From the project root directory:
 ```bash
 mkdir build
