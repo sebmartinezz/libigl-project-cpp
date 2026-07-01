@@ -178,4 +178,4 @@ Developed by:
 
 ## License
 
-This project is licensed under the MIT license. See the [LICENCE](LICENSE) file for details
+This project is licensed under the MIT license. See the [LICENCE](LICENSE) file for details.
