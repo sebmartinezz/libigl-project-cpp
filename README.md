@@ -1,7 +1,7 @@
 
 # Dynamic Curvature Visualization of 3D Meshes Using Libigl and OpenGL
 
-A C++ OpenGL framework for loading, deforming and visualizing 3D triangular meshes with curvature-based color mapping.
+A C++ OpenGL framework for loading, processing, deforming and visualizing 3D triangular meshes with curvature-based color mapping.
 
 <div align="center">
 
@@ -20,6 +20,15 @@ The objective of this project was to study and visualize geometric properties of
 To achieve a deeper understanding of how geometric information is transformed into a visual representation, a custom modular rendering pipeline was developed. The system was designed as a set of independent modules, allowing each stage of the process to be developed, tested, and analyzed separately while maintaining a clear connection between geometric processing and graphical visualization.
 
 This structure enabled the study of the complete workflow, from mesh representation and geometric operations to GPU-based rendering and the final visual output, providing insight into the interaction between computational geometry and graphics.
+
+## Features
+
+- OBJ/OFF mesh loading
+- Modular OpenGL renderer
+- CPU-GPU mesh upload and update system
+- Curvature-based color visualization
+- Mesh deformation system
+- Docker environment
 
 ## Structure
 The project is organized into modular components:
@@ -43,7 +52,7 @@ The project is organized into modular components:
 │
 ├── results/
 │
-├──  utilities/
+├── utilities/
 │   ├── _obj-models/
 │   ├── _off-models/
 │   ├── vert-shader/
@@ -55,7 +64,7 @@ The project is organized into modular components:
 
 The `src/` and `sanity/` directories follow the same module organization defined in `include/`, with corresponding implementations and tests for each engine component.
 
-The `results/`directory follows the same organization defined in `examples/`, with corresponding visualization results.
+The `results/` directory follows the same organization defined in `examples/`, with corresponding visualization results.
 
 ### Project Overview
 
@@ -97,7 +106,7 @@ Command breakdown:
 After building, executables can be found inside `build/`.  
 Run the executables with:
 ```bash
-./build/<category>/<subdirectory>/<executable>
+./build/<category>/<subcategory>/<executable>
 ```
 where `<category>` can be sanity or examples.
 
@@ -142,7 +151,7 @@ See [sanity tests document](docs/sanity-tests.md) for details about sanity tests
 [project Drive repository](https://drive.google.com/drive/folders/1ymkmy3yYDT-SRfTl61svm8XMh8n8oIXk?usp=sharing)
 
 [GLFW documentation](https://www.glfw.org/docs/latest/)  
-[GLAD github repository](https://github.com/Dav1dde/glad?utm_source=chatgpt.com)  
+[GLAD github repository](https://github.com/Dav1dde/glad)  
 [OpenGL Khronos API](https://wikis.khronos.org/opengl/index.php?title=Category:Core_API_Reference)  
 [OpenGL functions](https://docs.gl/)  
 [Libigl library documentation and tutorial](https://libigl.github.io/)  

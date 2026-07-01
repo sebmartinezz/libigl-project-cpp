@@ -17,9 +17,9 @@
 
 int main()
 {
-    std::cout << "\n---- curvature cow example ----\n";
+    std::cout << "\n---- combined cow example ----\n";
 
-    Window window = window_create(800, 600, "curvature cow example");
+    Window window = window_create(800, 600, "combined cow example");
 
     renderer_init();
     renderer_set_viewport(window.width, window.height);
@@ -90,7 +90,7 @@ int main()
     }//ejecuta destructor de mesh
     window_destroy(window);
 
-    std::cout << "\n---- end curvature cow example ----\n";
+    std::cout << "\n---- end combined cow example ----\n";
 
     return 0;
 }
