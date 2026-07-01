@@ -1,6 +1,14 @@
 
 # Dynamic Curvature Visualization of 3D Meshes Using Libigl and OpenGL
 
+A C++ OpenGL framework for loading, deforming and visualizing 3D triangular meshes with curvature-based color mapping.
+
+<div align="center">
+
+<img src="results/combined/gifs/comb-cow-16-9-gif.gif" width="60%">
+
+</div>
+
 ## About
 This project presents a system for coloring three-dimensional models based on their curvature during continuous physical deformations, integrating a custom OpenGL-based mini graphics engine for the real-time loading, processing, deformation, and visualization of 3D models from the public libigl repository.  
 Libigl is primarily used for geometric mesh processing and model loading, while the engine handles scene abstraction, graphics resource management, geometry updates during deformation and visualization, managing the communication between the CPU and the GPU through the rendering pipeline.
@@ -108,24 +116,24 @@ See [sanity tests document](docs/sanity-tests.md) for details about sanity tests
 ### Some Curvature Results
 
 <div style="display:flex; gap:10px;">
-  <img src="results/curvature/curv-cow.png" width="45%">
-  <img src="results/curvature/curv-bunny.png" width="45%">
+  <img src="results/curvature/curv-cow.png" width="40%">
+  <img src="results/curvature/curv-bunny.png" width="40%">
 </div>
 <div style="display:flex; gap:10px;">
-  <img src="results/curvature/curv-fertility.png" width="45%">
-  <img src="results/curvature/curv-cheburashka.png" width="45%">
+  <img src="results/curvature/curv-fertility.png" width="40%">
+  <img src="results/curvature/curv-cheburashka.png" width="40%">
 </div>
 
 ### Some Deformation Results
 
 <div style="display:flex; gap:10px;">
-  <img src="results/deformation/def-cow.gif" width="45%">
+  <img src="results/deformation/gifs/def-cow-gif.gif" width="40%">
 </div>
 
 ### Some Combined Results
 
 <div style="display:flex; gap:10px;">
-  <img src="results/combined/comb-cow.gif" width="45%">
+  <img src="results/combined/gifs/comb-cow-gif.gif" width="40%">
 </div>
 
 ## Resources
