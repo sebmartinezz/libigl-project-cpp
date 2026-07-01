@@ -23,7 +23,7 @@ The project is organized into modular components:
 ├── examples/
 │   ├── curvature/
 │   ├── deformation/
-│   └── both/
+│   └── combined/
 │
 ├── results/
 │
@@ -35,6 +35,8 @@ The project is organized into modular components:
 ```
 
 The `src/` and `sanity/` directories follow the same module organization defined in `include/`, with corresponding implementations and tests for each engine component.
+
+The `results/`directory follows the same organization defined in `examples/`, with corresponding visualization results.
 
 ### Modules Overview
 
