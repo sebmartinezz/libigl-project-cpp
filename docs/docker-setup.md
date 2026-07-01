@@ -90,4 +90,5 @@ Host machine
 ```
 
 ## Running the container on Linux Bash
-(TODO)
+
+<span style="color:red">TODO</span>

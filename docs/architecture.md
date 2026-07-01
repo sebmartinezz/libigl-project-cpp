@@ -12,19 +12,40 @@ All modules are defined through the header files in `include/` and implemented i
 
 The general workflow of the system is:
 ```text
-Model file (.obj / .off) (from model repository)
--> Model loader
--> Mesh representation (CPU side)
--> Geometry processing (curvature / deformation)
--> Update mesh data
--> GPU buffer upload (VAO, VBO, EBO)
--> Rendering pipeline
--> Final OpenGL visualization
+INPUT
+  Model (.obj / .off)
+        ↓
+
+LOAD
+  Model Loader
+        ↓
+
+CPU SIDE
+  Mesh Representation
+  Geometry Processing
+    - curvature
+    - deformation
+  Vertex Update
+        ↓
+
+CPU - GPU TRANSFER
+  Buffer Upload (VAO / VBO / EBO)
+        ↓
+
+GPU SIDE
+  Shader Pipeline
+    - vertex shader
+    - fragment shader
+        ↓
+
+OUTPUT
+  OpenGL Rendering
+  Visualization
 ```
 
 ## Modules Breakdown
 
-### Core Module
+### <span style="color:#9b59b6">Core Module</span>
 
 #### `glfw-window`
 
@@ -36,7 +57,7 @@ In addition to context creation, it provides utility functions for common window
 
 The module is also responsible for establishing the OpenGL execution environment before any rendering resources, such as shaders or meshes, are created.
 
-### Render Module
+### <span style="color:#3498db">Render Module</span>
 
 #### `renderer`
 
@@ -133,7 +154,7 @@ Camera position
 -> Rendered image
 ```
 
-### Input/Output Module
+### <span style="color:#2ecc71">Input/Output Module</span>
 
 #### `model-loader`
 
@@ -153,7 +174,7 @@ Mesh file (.obj / .off)
 
 The loader also initializes **default vertex colors** after loading. Since models usually only contain geometry information, the mesh starts with a default **white** color buffer that can later be modified by geometry processing modules such as curvature.
 
-### Geometry Module
+### <span style="color:#e67e22">Geometry Module</span>
 #### `curvature`
 
 Computes per-vertex curvature from an existing `Mesh` using `libigl`, extracting its geometry directly from the mesh’s Eigen-based representation. It calculates Gaussian curvature values and stores them as a scalar field associated with each vertex.

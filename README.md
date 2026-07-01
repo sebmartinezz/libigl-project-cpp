@@ -5,11 +5,11 @@
 This project presents a system for coloring three-dimensional models based on their curvature during continuous physical deformations, integrating a custom OpenGL-based mini graphics engine for the real-time loading, processing, deformation, and visualization of 3D models from the public libigl repository.  
 Libigl is primarily used for geometric mesh processing and model loading, while the engine handles scene abstraction, graphics resource management, geometry updates during deformation and visualization, managing the communication between the CPU and the GPU through the rendering pipeline.
 
-## Project Objective
+## Objective
 
 The objective of this project was to study and visualize geometric properties of deformable 3D meshes, focusing on curvature computation and mesh deformation processes.
 
-To achieve a deeper understanding of how geometric information is transformed into a visual representation, a custom modular rendering pipeline was developed. The system was designed as a set of independent modules (`core`, `render`, `io`, and `geometry`), allowing each stage of the process to be developed, tested, and analyzed separately while maintaining a clear connection between geometric processing and graphical visualization.
+To achieve a deeper understanding of how geometric information is transformed into a visual representation, a custom modular rendering pipeline was developed. The system was designed as a set of independent modules, allowing each stage of the process to be developed, tested, and analyzed separately while maintaining a clear connection between geometric processing and graphical visualization.
 
 This structure enabled the study of the complete workflow, from mesh representation and geometric operations to GPU-based rendering and the final visual output, providing insight into the interaction between computational geometry and graphics.
 
@@ -103,18 +103,22 @@ See [sanity tests document](docs/sanity-tests.md) for details about sanity tests
 ## Results
 ### Some Curvature Results
 
-<img src="results/curvature/cow.png" width="350">
-<img src="results/curvature/bunny.png" width="350">
-<img src="results/curvature/fertility.png" width="350">
-<img src="results/curvature/cheburashka.png" width="350">
+<div style="display:flex; gap:10px;">
+  <img src="results/curvature/cow.png" width="45%">
+  <img src="results/curvature/bunny.png" width="45%">
+</div>
+<div style="display:flex; gap:10px;">
+  <img src="results/curvature/fertility.png" width="45%">
+  <img src="results/curvature/cheburashka.png" width="45%">
+</div>
 
 ### Some Deformation Results
 
-(TODO)
+<span style="color:red">TODO</span>
 
 ### Some Combined Results
 
-(TODO)
+<span style="color:red">TODO</span>
 
 ## Resources
 

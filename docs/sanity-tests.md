@@ -17,8 +17,8 @@ For example:
 ```
 
 
-## Expected Test Output
-### Core Tests
+## Expected Tests Behavior
+### <span style="color:#9b59b6">Core Tests</span>
 #### `backend-sanity`
 Verifies that the basic project environment and required dependencies are working correctly.
 
@@ -64,7 +64,7 @@ window created
 
 ----end window sanity----
 ```
-### Render Tests
+### <span style="color:#3498db">Render Tests</span>
 #### `render-renderer-sanity`
 Verifies the basic renderer initialization and OpenGL state configuration.
 
@@ -161,7 +161,7 @@ orbit: dx dy (when mouse click pressed)
 ---- end camera sanity ----
 ```
 
-### Input/Output Tests
+### <span style="color:#2ecc71">Input/Output Tests</span>
 #### `io-model-loader-off/obj-sanity`
 Verifies loading external mesh files and converting them into the internal `Mesh` representation.
 
@@ -187,7 +187,7 @@ mesh loaded
 ---- end model loader (off/obj) sanity ----
 ```
 
-### Geometry Tests
+### <span style="color:#e67e22">Geometry Tests</span>
 #### `geometry-curvature-sanity`
 Verifies curvature computation and curvature-based color mapping.
 
