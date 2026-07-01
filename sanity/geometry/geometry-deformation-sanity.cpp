@@ -96,7 +96,7 @@ int main()
 
             float t = (float)glfwGetTime();
 
-            twist(mesh,t*0.8f, 0);
+            twist(mesh,t*0.8f, 0, M_PI*0.5);
 
             mesh.update_positions();
 

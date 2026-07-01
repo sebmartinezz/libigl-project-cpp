@@ -1,7 +1,7 @@
 #include "geometry/deformation.h"
 #include <cmath>
 
-void twist(Mesh& mesh, float strength, float y0)
+void twist(Mesh& mesh, float strength, float y0, float max_angle)
 {
     int N = mesh.positions.rows(); //vertices
 
@@ -13,7 +13,6 @@ void twist(Mesh& mesh, float strength, float y0)
 
         float y_rel = y - y0;
 
-        float max_angle = M_PI * 0.5f;
         float envelope = 1.0f / (1.0f + y_rel*y_rel);
         float angle = max_angle * envelope * std::sin(strength * y_rel);
 

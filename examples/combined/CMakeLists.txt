@@ -1,0 +1,1 @@
+combined_example(combined-cow-example combined-cow-example.cpp)

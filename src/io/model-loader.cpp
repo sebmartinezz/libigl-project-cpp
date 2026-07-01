@@ -34,6 +34,7 @@ Mesh load_model(const std::string& path)
 
     mesh.positions = V.cast<float>(); //volverlos float
     mesh.indices = F.cast<unsigned int>(); //volverlos unsigned int
+    mesh.original_positions = mesh.positions;
 
     mesh.colors.resize(V.rows(),3);
     mesh.colors.setOnes(); //por defecto colors va a ser todo 1, entonces el modelo va a ser blanco

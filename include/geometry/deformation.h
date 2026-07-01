@@ -2,4 +2,4 @@
 #include "render/mesh.h"
 #include <vector>
 
-void twist (Mesh&mesh, float strength, float y0);
+void twist (Mesh&mesh, float strength, float y0, float max_angle);

@@ -29,12 +29,6 @@ set(DATA_DIR "${CMAKE_SOURCE_DIR}/utilities")
 set(OBJ_MODEL_DIR "${CMAKE_SOURCE_DIR}/utilities/_obj-models") #para los modelos obj
 set(OFF_MODEL_DIR "${CMAKE_SOURCE_DIR}/utilities/_off-models") #para los modelos off
 
-#[
-add_subdirectory(sanity/core)
-add_subdirectory(sanity/render)
-add_subdirectory(sanity/io)
-add_subdirectory(sanity/geometry)
-
 function(curvature_example NAME MAIN)
     add_executable(${NAME}
         ${MAIN}
@@ -73,6 +67,93 @@ function(curvature_example NAME MAIN)
     )
 endfunction()
 
+function(deformation_example NAME MAIN)
+    add_executable(${NAME}
+        ${MAIN}
+
+        ${CMAKE_SOURCE_DIR}/src/geometry/deformation.cpp
+
+        ${CMAKE_SOURCE_DIR}/src/render/camera.cpp
+        ${CMAKE_SOURCE_DIR}/src/render/mesh.cpp
+        ${CMAKE_SOURCE_DIR}/src/render/shader.cpp
+        ${CMAKE_SOURCE_DIR}/src/render/renderer.cpp
+
+        ${CMAKE_SOURCE_DIR}/src/core/glfw-window.cpp
+
+        ${CMAKE_SOURCE_DIR}/src/io/model-loader.cpp
+    )
+
+
+    target_include_directories(${NAME} PRIVATE
+        ${CMAKE_SOURCE_DIR}/include
+        /opt/libigl/include
+    )
+
+
+    target_link_libraries(${NAME} PRIVATE
+        glfw
+        glad
+        OpenGL::GL
+        Eigen3::Eigen
+    )
+
+
+    target_compile_definitions(${NAME} PRIVATE
+        DATA_DIR="${DATA_DIR}"
+        OFF_MODEL_DIR="${OFF_MODEL_DIR}"
+        OBJ_MODEL_DIR="${OBJ_MODEL_DIR}"
+    )
+endfunction()
+
+
+function(combined_example NAME MAIN)
+    add_executable(${NAME}
+        ${MAIN}
+
+        ${CMAKE_SOURCE_DIR}/src/geometry/deformation.cpp
+        ${CMAKE_SOURCE_DIR}/src/geometry/curvature.cpp
+
+        ${CMAKE_SOURCE_DIR}/src/render/camera.cpp
+        ${CMAKE_SOURCE_DIR}/src/render/mesh.cpp
+        ${CMAKE_SOURCE_DIR}/src/render/shader.cpp
+        ${CMAKE_SOURCE_DIR}/src/render/renderer.cpp
+
+        ${CMAKE_SOURCE_DIR}/src/core/glfw-window.cpp
+
+        ${CMAKE_SOURCE_DIR}/src/io/model-loader.cpp
+    )
+
+
+    target_include_directories(${NAME} PRIVATE
+        ${CMAKE_SOURCE_DIR}/include
+        /opt/libigl/include
+    )
+
+
+    target_link_libraries(${NAME} PRIVATE
+        glfw
+        glad
+        OpenGL::GL
+        Eigen3::Eigen
+    )
+
+
+    target_compile_definitions(${NAME} PRIVATE
+        DATA_DIR="${DATA_DIR}"
+        OFF_MODEL_DIR="${OFF_MODEL_DIR}"
+        OBJ_MODEL_DIR="${OBJ_MODEL_DIR}"
+    )
+endfunction()
+
+
+##comment directories to avoid recompiling
+#sanity
+add_subdirectory(sanity/core)
+add_subdirectory(sanity/render)
+add_subdirectory(sanity/io)
+add_subdirectory(sanity/geometry)
+
+#examples
 add_subdirectory(examples/curvature)
-#add_subdirectory(examples/deformation)
-#add_subdirectory(examples/both)
+add_subdirectory(examples/deformation)
+add_subdirectory(examples/combined)
