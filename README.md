@@ -5,7 +5,7 @@ A C++ OpenGL framework for loading, processing, deforming and visualizing 3D tri
 
 <div align="center">
 
-<img src="results/combined/gifs/comb-cow-16-9-gif.gif" width="80%">
+<img src="results/combined/gifs/comb-cow-gif.gif" width="80%">
 
 </div>
 
