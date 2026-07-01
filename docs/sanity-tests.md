@@ -156,6 +156,7 @@ OpenGL: <OpenGL version>
 GLSL: <GLSL version>
 shader ok
 setupgl called
+orbit: dx dy (when mouse click pressed)
 
 ---- end camera sanity ----
 ```
