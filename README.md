@@ -5,7 +5,7 @@ A C++ OpenGL framework for loading, deforming and visualizing 3D triangular mesh
 
 <div align="center">
 
-<img src="results/combined/gifs/comb-cow-16-9-gif.gif" width="60%">
+<img src="results/combined/gifs/comb-cow-16-9-gif.gif" width="80%">
 
 </div>
 
@@ -116,24 +116,24 @@ See [sanity tests document](docs/sanity-tests.md) for details about sanity tests
 ### Some Curvature Results
 
 <div style="display:flex; gap:10px;">
-  <img src="results/curvature/curv-cow.png" width="40%">
-  <img src="results/curvature/curv-bunny.png" width="40%">
+  <img src="results/curvature/curv-cow.png" width="45%">
+  <img src="results/curvature/curv-bunny.png" width="45%">
 </div>
 <div style="display:flex; gap:10px;">
-  <img src="results/curvature/curv-fertility.png" width="40%">
-  <img src="results/curvature/curv-cheburashka.png" width="40%">
+  <img src="results/curvature/curv-fertility.png" width="45%">
+  <img src="results/curvature/curv-cheburashka.png" width="45%">
 </div>
 
 ### Some Deformation Results
 
 <div style="display:flex; gap:10px;">
-  <img src="results/deformation/gifs/def-cow-gif.gif" width="40%">
+  <img src="results/deformation/gifs/def-cow-gif.gif" width="45%">
 </div>
 
 ### Some Combined Results
 
 <div style="display:flex; gap:10px;">
-  <img src="results/combined/gifs/comb-cow-gif.gif" width="40%">
+  <img src="results/combined/gifs/comb-cow-gif.gif" width="45%">
 </div>
 
 ## Resources
