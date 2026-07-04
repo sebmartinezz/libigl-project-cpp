@@ -1,7 +1,8 @@
 
-# Dynamic Curvature Visualization of 3D Meshes Using Libigl and OpenGL
+# Dynamic curvature visualization of 3
+three-dimensional meshes using libigl and opengl
 
-A C++ OpenGL framework for loading, processing, deforming and visualizing 3D triangular meshes with curvature-based color mapping.
+A c++ openGL framework for loading, processing, deforming and visualizing three dimensional triangular meshes with curvature-based color mapping.
 
 <div align="center">
 
@@ -30,7 +31,7 @@ This structure enabled the study of the complete workflow, from mesh representat
 - Mesh deformation system
 - Docker environment
 
-## Structure
+## Repository structure
 The project is organized into modular components:
 
 ```
@@ -86,7 +87,7 @@ See [architecture document](docs/architecture.md) for details about the engine m
   - X11 (Linux)
 
 
-## Docker Setup
+## Docker setup
 
 This project provides a Docker environment with all required dependencies that ensures a consistent development environment across systems. See [docker setup document](docs/docker-setup.md) for details about the Docker image and the launching of the container.
 
@@ -116,13 +117,13 @@ For example:
 ./build/examples/curvature/curvature-cow-example
 ```
 
-## Sanity Tests
+## Sanity tests
 
 The project includes sanity tests to verify each module independently.  
 See [sanity tests document](docs/sanity-tests.md) for details about sanity tests execution and expected outputs.
 
 ## Results
-### Some Curvature Results
+### Some curvature results
 
 <div style="display:flex; gap:10px;">
   <img src="results/curvature/curv-cow.png" width="45%">
@@ -133,13 +134,13 @@ See [sanity tests document](docs/sanity-tests.md) for details about sanity tests
   <img src="results/curvature/curv-cheburashka.png" width="45%">
 </div>
 
-### Some Deformation Results
+### Some deformation results
 
 <div style="display:flex; gap:10px;">
   <img src="results/deformation/gifs/def-cow-gif.gif" width="45%">
 </div>
 
-### Some Combined Results
+### Some combined results
 
 <div style="display:flex; gap:10px;">
   <img src="results/combined/gifs/comb-cow-gif.gif" width="45%">
