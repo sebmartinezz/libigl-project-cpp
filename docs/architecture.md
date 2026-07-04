@@ -1,6 +1,6 @@
 # Engine Architecture
 
-## Architecture Overview
+## Architecture overview
 
 The project is organized as a modular real-time mesh visualization system built from `OpenGL`, `GLFW`, `GLAD`, `Eigen`, `GLM`, and `libigl`.  
 All modules are defined through the header files in `include/` and implemented in the source files inside `src/`. Each one is responsible for a specific part of the rendering and geometry processing pipeline:
@@ -43,9 +43,9 @@ OUTPUT
   Visualization
 ```
 
-## Modules Breakdown
+## Modules breakdown
 
-### <span style="color:#9b59b6">Core Module</span>
+### <span style="color:#9b59b6">Core module</span>
 
 #### `glfw-window`
 
@@ -57,7 +57,7 @@ In addition to context creation, it provides utility functions for common window
 
 The module is also responsible for establishing the OpenGL execution environment before any rendering resources, such as shaders or meshes, are created.
 
-### <span style="color:#3498db">Render Module</span>
+### <span style="color:#3498db">Render module</span>
 
 #### `renderer`
 
@@ -154,7 +154,7 @@ Camera position
 -> Rendered image
 ```
 
-### <span style="color:#2ecc71">Input/Output Module</span>
+### <span style="color:#2ecc71">Input/Output module</span>
 
 #### `model-loader`
 
@@ -174,7 +174,7 @@ Mesh file (.obj / .off)
 
 The loader also initializes **default vertex colors** after loading. Since models usually only contain geometry information, the mesh starts with a default **white** color buffer that can later be modified by geometry processing modules such as curvature.
 
-### <span style="color:#e67e22">Geometry Module</span>
+### <span style="color:#e67e22">Geometry module</span>
 #### `curvature`
 
 Computes per-vertex curvature from an existing `Mesh` using `libigl`, extracting its geometry directly from the mesh’s Eigen-based representation. It calculates Gaussian curvature values and stores them as a scalar field associated with each vertex.

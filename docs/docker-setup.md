@@ -1,6 +1,6 @@
-# Docker Setup
+# Docker setup
 
-## Environment Description
+## Environment description
 
 This project uses Docker to provide a consistent development environment for building and running the codebase.  
 The Docker environment contains all required dependencies, libraries, and tools needed by the project, including the C++ compiler, `CMake`, OpenGL-related packages, `GLFW`, `Eigen`, `GLM` and `libigl`.
@@ -8,7 +8,7 @@ The Docker environment contains all required dependencies, libraries, and tools 
 Using Docker avoids manual installation and configuration of these dependencies on the host machine. The project can be compiled and executed inside the container while keeping the source files synchronized with the host system.  
 The container will be configured to support graphical output through an X server, allowing OpenGL-based visualization to be displayed on the host machine while the project runs inside Docker.
 
-## Docker Image
+## Docker image
 
 If you are in Windows, make sure Docker Desktop is running before building the image.
 
