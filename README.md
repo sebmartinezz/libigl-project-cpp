@@ -1,6 +1,5 @@
 
-# Dynamic curvature visualization of 3
-three-dimensional meshes using libigl and opengl
+# Dynamic curvature visualization of three-dimensional meshes using libigl and opengl
 
 A c++ openGL framework for loading, processing, deforming and visualizing three dimensional triangular meshes with curvature-based color mapping.
 
