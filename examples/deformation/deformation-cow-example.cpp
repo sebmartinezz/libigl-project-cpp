@@ -61,6 +61,7 @@ int main()
             float t = (float)glfwGetTime();
             float strength = 2.0f * std::sin(t);
             twist(mesh,strength, 0, M_PI*2.0);
+            
             mesh.update_positions();
 
 
