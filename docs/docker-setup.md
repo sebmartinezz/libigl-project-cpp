@@ -62,6 +62,11 @@ Then launch the container with:
 ```powershell
 docker run -it --rm -v "${PWD}:/workspace" -e DISPLAY=<IPv4>:0 libiglproj
 ```
+or
+
+```bash
+docker run -it --rm -v "${PWD}:/workspace" -e DISPLAY=host.docker.internal:0 libiglproj
+```
 
 Command breakdown:
 
