@@ -28,10 +28,10 @@ int main()
     );
 
     Camera camera;
-    camera.set_distance(1.5f);
+    camera.set_distance(3.0f);
 
     {
-        Mesh mesh = load_model(std::string(OFF_MODEL_DIR)+"/bunny.off");
+        Mesh mesh = load_model(std::string(OFF_MODEL_DIR)+"/planexy.off");
 
         mesh.upload();
 
