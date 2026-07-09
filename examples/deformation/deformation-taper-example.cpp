@@ -28,8 +28,8 @@ int main()
     );
 
     Camera camera;
-    camera.set_distance(1.0f);
-
+    camera.set_distance(1.5f);
+    camera.set_target(glm::vec3(0.5, 0.5, 0.5));
     {
         Mesh mesh = load_model(std::string(OFF_MODEL_DIR)+"/cheburashka.off");
 
