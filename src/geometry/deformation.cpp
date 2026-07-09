@@ -84,3 +84,21 @@ void bulge(Mesh& mesh, float strength)
         mesh.positions(ii,2) = z * scale;
     }
 }
+void taper(Mesh& mesh, float strength)
+{
+    int N = mesh.positions.rows();
+
+    for(int ii = 0; ii < N; ii++)
+    {
+        float x = mesh.original_positions(ii,0);
+        float y = mesh.original_positions(ii,1);
+        float z = mesh.original_positions(ii,2);
+
+        // Factor de escala según la altura
+        float scale = 1.0f + strength * y;
+
+        mesh.positions(ii,0) = x * scale;
+        mesh.positions(ii,1) = y;
+        mesh.positions(ii,2) = z * scale;
+    }
+}
