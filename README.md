@@ -166,7 +166,7 @@ See [sanity tests document](docs/sanity-tests.md) for details about sanity tests
 [How Shaders are used in the pipeline - Modern OpenGL](https://www.youtube.com/watch?v=kCDBzuMWTYA)  
 [Drawing a colored triangle (using multiple vertex buffer objects) - Modern OpenGL](https://youtu.be/eYMAR5bW8eo?si=RpqIyMOdpoAwMxLE)  
 [OpenGL Math - Introduction to the GLM Library - Modern OpenGL](https://www.youtube.com/watch?v=F0vUESYIrno&list=PLvv0ScY6vfd9zlZkIIqGDeG5TUWswkMox&index=18)  
-[Escuela de Posgrado SGP 2020: breve introducción de libigl](https://www.youtube.com/watch?v=OSQWCABxLsM&t=1029s)
+[Escuela de Posgrado SGP 2020: breve introducción de libigl](https://www.youtube.com/watch?v=OSQWCABxLsM&t=1029s)  
 [Tutorial práctico de LibiGL (from minute 36:47)](https://www.youtube.com/watch?v=hsYRSUW-FGA&t=2209s)  
 
 ## Authors
