@@ -146,10 +146,11 @@ See [sanity tests document](docs/sanity-tests.md) for details about sanity tests
 </div>
 
 ## Resources
-
+### Repositories for this project
 [project GitHub repository](https://github.com/sebmartinezz/libigl-project-cpp)  
 [project Drive repository](https://drive.google.com/drive/folders/1ymkmy3yYDT-SRfTl61svm8XMh8n8oIXk?usp=sharing)
 
+### Websites
 [GLFW documentation](https://www.glfw.org/docs/latest/)  
 [GLAD github repository](https://github.com/Dav1dde/glad)  
 [OpenGL Khronos API](https://wikis.khronos.org/opengl/index.php?title=Category:Core_API_Reference)  
@@ -157,12 +158,16 @@ See [sanity tests document](docs/sanity-tests.md) for details about sanity tests
 [Libigl library documentation and tutorial](https://libigl.github.io/)  
 [Models repository](https://github.com/libigl/libigl-tutorial-data.git)  
 [Tanh Scaling](https://medium.com/ai-enthusiast/mastering-tanh-a-deep-dive-into-balanced-activation-for-machine-learning-4734ec147dd9)
- 
-[VIDEO - I Didn't Understand Graphics Engines, So I Built One](https://youtu.be/lborsSRDri0?si=YAxvrhZRqGZ29Ext)  
-[VIDEO - Triangles, VAO, VBO and EBO](https://www.youtube.com/watch?v=Ktp1P4J04Gw)  
-[VIDEO - Introduction to shaders: Learn the basics](https://www.youtube.com/watch?v=3mfvZ-mdtZQ)  
-[VIDEO - How Shaders are used in the pipeline - Modern OpenGL](https://www.youtube.com/watch?v=kCDBzuMWTYA)  
-[VIDEO - OpenGL Math - Introduction to the GLM Library](https://www.youtube.com/watch?v=F0vUESYIrno&list=PLvv0ScY6vfd9zlZkIIqGDeG5TUWswkMox&index=18)
+
+### Videos
+[I Didn't Understand Graphics Engines, So I Built One](https://youtu.be/lborsSRDri0?si=YAxvrhZRqGZ29Ext)  
+[Triangles, Vertex Array Object (VAO) and Vertex Buffer Objects - Modern OpenGL](https://www.youtube.com/watch?v=Ktp1P4J04Gw)  
+[Introduction to shaders: Learn the basics!](https://www.youtube.com/watch?v=3mfvZ-mdtZQ)  
+[How Shaders are used in the pipeline - Modern OpenGL](https://www.youtube.com/watch?v=kCDBzuMWTYA)  
+[Drawing a colored triangle (using multiple vertex buffer objects) - Modern OpenGL](https://youtu.be/eYMAR5bW8eo?si=RpqIyMOdpoAwMxLE)  
+[OpenGL Math - Introduction to the GLM Library - Modern OpenGL](https://www.youtube.com/watch?v=F0vUESYIrno&list=PLvv0ScY6vfd9zlZkIIqGDeG5TUWswkMox&index=18)  
+[Escuela de Posgrado SGP 2020: breve introducción de libigl](https://www.youtube.com/watch?v=OSQWCABxLsM&t=1029s)
+[Tutorial práctico de LibiGL (from minute 36:47)](https://www.youtube.com/watch?v=hsYRSUW-FGA&t=2209s)  
 
 ## Authors
 
