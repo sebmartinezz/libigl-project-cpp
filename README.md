@@ -136,7 +136,7 @@ See [sanity tests document](docs/sanity-tests.md) for details about sanity tests
 ### Some deformation results
 
 <div style="display:flex; gap:10px;">
-  <img src="results/deformation/gifs/def-cow-gif.gif" width="45%">
+  <img src="results/deformation/gifs/def-twist-gif.gif" width="45%">
 </div>
 
 ### Some combined results
@@ -154,6 +154,7 @@ See [sanity tests document](docs/sanity-tests.md) for details about sanity tests
 [GLAD github repository](https://github.com/Dav1dde/glad)  
 [OpenGL Khronos API](https://wikis.khronos.org/opengl/index.php?title=Category:Core_API_Reference)  
 [OpenGL functions](https://docs.gl/)  
+[VIDEO - I Didn't Understand Graphics Engines, So I Built One](https://youtu.be/lborsSRDri0?si=YAxvrhZRqGZ29Ext)  
 [VIDEO - Triangles, VAO, VBO and EBO](https://www.youtube.com/watch?v=Ktp1P4J04Gw)  
 [VIDEO - Introduction to shaders: Learn the basics](https://www.youtube.com/watch?v=3mfvZ-mdtZQ)  
 [VIDEO - How Shaders are used in the pipeline - Modern OpenGL](https://www.youtube.com/watch?v=kCDBzuMWTYA)  
