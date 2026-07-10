@@ -153,15 +153,16 @@ See [sanity tests document](docs/sanity-tests.md) for details about sanity tests
 [GLFW documentation](https://www.glfw.org/docs/latest/)  
 [GLAD github repository](https://github.com/Dav1dde/glad)  
 [OpenGL Khronos API](https://wikis.khronos.org/opengl/index.php?title=Category:Core_API_Reference)  
-[OpenGL functions](https://docs.gl/)  
+[OpenGL functions](https://docs.gl/)
+[Libigl library documentation and tutorial](https://libigl.github.io/)  
+[Models repository](https://github.com/libigl/libigl-tutorial-data.git)  
+[Tanh Scaling](https://medium.com/ai-enthusiast/mastering-tanh-a-deep-dive-into-balanced-activation-for-machine-learning-4734ec147dd9)
+ 
 [VIDEO - I Didn't Understand Graphics Engines, So I Built One](https://youtu.be/lborsSRDri0?si=YAxvrhZRqGZ29Ext)  
 [VIDEO - Triangles, VAO, VBO and EBO](https://www.youtube.com/watch?v=Ktp1P4J04Gw)  
 [VIDEO - Introduction to shaders: Learn the basics](https://www.youtube.com/watch?v=3mfvZ-mdtZQ)  
 [VIDEO - How Shaders are used in the pipeline - Modern OpenGL](https://www.youtube.com/watch?v=kCDBzuMWTYA)  
-[VIDEO - OpenGL Math - Introduction to the GLM Library](https://www.youtube.com/watch?v=F0vUESYIrno&list=PLvv0ScY6vfd9zlZkIIqGDeG5TUWswkMox&index=18)  
-[Libigl library documentation and tutorial](https://libigl.github.io/)  
-[Models repository](https://github.com/libigl/libigl-tutorial-data.git)  
-[Tanh Scaling](https://medium.com/ai-enthusiast/mastering-tanh-a-deep-dive-into-balanced-activation-for-machine-learning-4734ec147dd9)
+[VIDEO - OpenGL Math - Introduction to the GLM Library](https://www.youtube.com/watch?v=F0vUESYIrno&list=PLvv0ScY6vfd9zlZkIIqGDeG5TUWswkMox&index=18)
 
 ## Authors
 
