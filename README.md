@@ -160,7 +160,7 @@ See [sanity tests document](docs/sanity-tests.md) for details about sanity tests
 [Tanh Scaling](https://medium.com/ai-enthusiast/mastering-tanh-a-deep-dive-into-balanced-activation-for-machine-learning-4734ec147dd9)
 
 ### Videos
-[Intro yo Graphics Programming (What it is and where to start)](https://youtu.be/Jw-g_Zrz4Ys?si=gWKJL7WtF5kjZTHF)  
+[Intro to Graphics Programming (What it is and where to start)](https://youtu.be/Jw-g_Zrz4Ys?si=gWKJL7WtF5kjZTHF)  
 [I Didn't Understand Graphics Engines, So I Built One](https://youtu.be/lborsSRDri0?si=YAxvrhZRqGZ29Ext)  
 [Triangles, Vertex Array Object (VAO) and Vertex Buffer Objects - Modern OpenGL](https://www.youtube.com/watch?v=Ktp1P4J04Gw)  
 [Introduction to shaders: Learn the basics!](https://www.youtube.com/watch?v=3mfvZ-mdtZQ)  
