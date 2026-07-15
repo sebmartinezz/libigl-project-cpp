@@ -163,7 +163,7 @@ See [sanity tests document](docs/sanity-tests.md) for details about sanity tests
 [Intro to Graphics Programming (What it is and where to start)](https://youtu.be/Jw-g_Zrz4Ys?si=gWKJL7WtF5kjZTHF)  
 [I Didn't Understand Graphics Engines, So I Built One](https://youtu.be/lborsSRDri0?si=YAxvrhZRqGZ29Ext)  
 [Triangles, Vertex Array Object (VAO) and Vertex Buffer Objects - Modern OpenGL](https://www.youtube.com/watch?v=Ktp1P4J04Gw)  
-[Rendering a Quad Again! (More efficient Indexed-Buffer Strategy) - Modern OpenGL](https://youtu.be/JUBBGRuf1CM?si=90YMDexP1_WaQOi3)
+[Rendering a Quad Again! (More efficient Indexed-Buffer Strategy) - Modern OpenGL](https://youtu.be/JUBBGRuf1CM?si=90YMDexP1_WaQOi3)  
 [Introduction to shaders: Learn the basics!](https://www.youtube.com/watch?v=3mfvZ-mdtZQ)  
 [How Shaders are used in the pipeline - Modern OpenGL](https://www.youtube.com/watch?v=kCDBzuMWTYA)  
 [Drawing a colored triangle (using multiple vertex buffer objects) - Modern OpenGL](https://youtu.be/eYMAR5bW8eo?si=RpqIyMOdpoAwMxLE)  
