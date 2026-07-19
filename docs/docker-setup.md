@@ -21,7 +21,7 @@ docker build -t libiglproj .
 This creates a Docker image named `libiglproj` using the `Dockerfile` located in the current directory.  
 The Docker image is based on Ubuntu 24.04 and configures the complete development environment, including:
 
-- **C++ compiler setup**
+- **CPP compiler setup**
   - Installs g++-14
   - Configures g++ and gcc to use version 14 by default
 - **Build system**
@@ -51,7 +51,14 @@ After the image is created, the project can be executed inside a Docker containe
 
 ## Running the container on Windows PowerShell
 
-Before launching the container, make sure that both Docker Desktop and the X server are running. The X server is required because the graphical application runs inside the Docker container, but the display is provided by the host system. Make sure you **disable access control** on `VcXsrv`.
+Before launching the container, make sure that both Docker Desktop and the X server are running. The X server is required because the graphical application runs inside the Docker container, but the display is provided by the host system. Make sure you **disable access control** on [VcXsrv](https://sourceforge.net/projects/vcxsrv/).
+
+
+<div style="display:flex; gap:10px;">
+  <img src="assets/display-num.png" width="20%">
+  <img src="assets/access-control.png" width="20%">
+</div>  
+
 
 First, obtain the IPv4 address of the machine running the X server using:
 
@@ -93,7 +100,3 @@ Host machine
 -> GLFW/OpenGL application
 -> Display output
 ```
-
-## Running the container on Linux Bash
-
-<span style="color:red">TODO</span>
