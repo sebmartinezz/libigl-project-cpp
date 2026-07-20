@@ -5,7 +5,7 @@ A c++ openGL framework for loading, processing, deforming and visualizing three 
 
 <div align="center">
 
-<img src="results/combined/gifs/comb-cow-gif.gif" width="80%">
+<img src="results/combined/gifs/comb-cow-twist.gif" width="80%">
 
 </div>
 
@@ -90,7 +90,7 @@ See [architecture document](docs/architecture.md) for details about the engine m
 
 This project provides a Docker environment with all required dependencies that ensures a consistent development environment across systems. See [docker setup document](docs/docker-setup.md) for details about the Docker image and the launching of the container.
 
-## Compilation and Execution
+## Compilation and execution
 
 From the project root directory (inside the Docker container):
 ```bash
@@ -136,13 +136,15 @@ See [sanity tests document](docs/sanity-tests.md) for details about sanity tests
 ### Some deformation results
 
 <div style="display:flex; gap:10px;">
-  <img src="results/deformation/gifs/def-twist-gif.gif" width="45%">
+  <img src="results/deformation/gifs/def-ripple.gif" width="45%">
+  <img src="results/deformation/gifs/def-taper.gif" width="45%">
 </div>
 
 ### Some combined results
 
 <div style="display:flex; gap:10px;">
-  <img src="results/combined/gifs/comb-cow-gif.gif" width="45%">
+  <img src="results/combined/gifs/comb-bunny-twist.gif" width="45%">
+  <img src="results/combined/gifs/comb-fertility-ripple.gif" width="45%">
 </div>
 
 ## Resources

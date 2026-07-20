@@ -17,9 +17,9 @@
 
 int main()
 {
-    std::cout << "\n---- deformation bend example ----\n";
+    std::cout << "\n---- combined bunny-twist example ----\n";
 
-    Window window = window_create(800,600,"deformation bend example");
+    Window window = window_create(800,600,"combined bunny-twist example");
 
     renderer_init();
     renderer_set_viewport(window.width,window.height);
@@ -90,7 +90,7 @@ int main()
 
     window_destroy(window);
 
-    std::cout << "\n---- end deformation bend example ----\n";
+    std::cout << "\n---- end combined bunny-twist example ----\n";
 
     return 0;
 }

@@ -7,6 +7,7 @@
 
 #include "io/model-loader.h"
 
+
 #include "geometry/curvature.h"
 #include "geometry/deformation.h"
 
@@ -16,9 +17,9 @@
 
 int main()
 {
-    std::cout << "\n---- deformation taper example ----\n";
+    std::cout << "\n---- combined planexy-bend example ----\n";
 
-    Window window = window_create(800,600,"deformation taper example");
+    Window window = window_create(800,600,"combined planexy-bend example");
 
     renderer_init();
     renderer_set_viewport(window.width,window.height);
@@ -29,10 +30,10 @@ int main()
     );
 
     Camera camera;
-    camera.set_distance(1.5f);
-    camera.set_target(glm::vec3(0.5, 0.5, 0.5));
+    camera.set_distance(3.0f);
+
     {
-        Mesh mesh = load_model(std::string(OFF_MODEL_DIR)+"/cheburashka.off");
+        Mesh mesh = load_model(std::string(OFF_MODEL_DIR)+"/planexy.off");
 
         Eigen::VectorXf K;
         mesh.upload();
@@ -42,31 +43,30 @@ int main()
 
         while(!window_should_close(window))
         {
-            double xpos, ypos;
+            double xpos,ypos;
 
-            window_get_mouse_position(window, xpos, ypos);
+            window_get_mouse_position(window,xpos,ypos);
 
-            double dx = xpos - lastX;
-            double dy = ypos - lastY;
+            double dx = xpos-lastX;
+            double dy = ypos-lastY;
 
             lastX = xpos;
             lastY = ypos;
 
             if(window_mouse_pressed(window))
             {
-                camera.orbit(dx, dy);
+                camera.orbit(dx,dy);
             }
 
             //---------------------------------
-            // Deformación Taper
+            // Deformación Bend
             //---------------------------------
 
             float t = (float)glfwGetTime();
 
-            float strength = 0.5f * std::sin(t);
+            float radius = 0.75f + 0.35f*std::sin(t);
 
-            taper(mesh, strength);
-
+            bend(mesh,radius);
             curvature (mesh, K);
             map_curvature_color(mesh, K);
 
@@ -81,9 +81,9 @@ int main()
 
             glm::mat4 model = glm::mat4(1.0f);
 
-            shader.setMat4("model", model);
-            shader.setMat4("view", camera.view_matrix());
-            shader.setMat4("projection", camera.projection_matrix());
+            shader.setMat4("model",model);
+            shader.setMat4("view",camera.view_matrix());
+            shader.setMat4("projection",camera.projection_matrix());
 
             mesh.draw();
 
@@ -94,7 +94,7 @@ int main()
 
     window_destroy(window);
 
-    std::cout << "\n---- end deformation taper example ----\n";
+    std::cout << "\n---- end combined planexy-bend example ----\n";
 
     return 0;
 }

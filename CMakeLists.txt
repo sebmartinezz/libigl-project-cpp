@@ -146,7 +146,7 @@ function(combined_example NAME MAIN)
 endfunction()
 
 
-##comment directories to avoid recompiling
+#comment directories to avoid recompiling
 #sanity
 add_subdirectory(sanity/core)
 add_subdirectory(sanity/render)

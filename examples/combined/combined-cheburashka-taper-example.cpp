@@ -14,37 +14,33 @@
 #include <iostream>
 #include <cmath>
 
-
 int main()
 {
-    std::cout << "\n---- combined cow example ----\n";
+    std::cout << "\n---- combined cheburashka-taper example ----\n";
 
-    Window window = window_create(800, 600, "combined cow example");
+    Window window = window_create(800,600,"combined cheburashka-taper example");
 
     renderer_init();
-    renderer_set_viewport(window.width, window.height);
+    renderer_set_viewport(window.width,window.height);
 
     Shader shader(
         DATA_DIR "/vert-shader/curv-demo.vert",
         DATA_DIR "/frag-shader/curv-demo.frag"
     );
-    
-    std::cout<<"shader created";
 
     Camera camera;
     camera.set_distance(1.5f);
+    camera.set_target(glm::vec3(0.5, 0.5, 0.5));
     {
-        Mesh mesh = load_model(std::string(OFF_MODEL_DIR) + "/cow.off");
-        std::cout << "mesh loaded\n";
-        
+        Mesh mesh = load_model(std::string(OFF_MODEL_DIR)+"/cheburashka.off");
+
         Eigen::VectorXf K;
         mesh.upload();
 
         double lastX = 0.0;
         double lastY = 0.0;
 
-
-        while (!window_should_close(window))
+        while(!window_should_close(window))
         {
             double xpos, ypos;
 
@@ -61,9 +57,15 @@ int main()
                 camera.orbit(dx, dy);
             }
 
+            //---------------------------------
+            // Deformación Taper
+            //---------------------------------
+
             float t = (float)glfwGetTime();
-            float strength = 2.0f * std::sin(t);
-            twist(mesh,strength, 0, M_PI*2.0);
+
+            float strength = 0.5f * std::sin(t);
+
+            taper(mesh, strength);
 
             curvature (mesh, K);
             map_curvature_color(mesh, K);
@@ -71,15 +73,16 @@ int main()
             mesh.update_positions();
             mesh.update_colors();
 
+            //---------------------------------
 
-            renderer_clear(0.08f, 0.08f, 0.08f, 1.0f);
+            renderer_clear(0.08f,0.08f,0.08f,1.0f);
 
             shader.use();
+
             glm::mat4 model = glm::mat4(1.0f);
 
-             //.vert necesita esto
-            shader.setMat4("model", model); //objeto-mundo
-            shader.setMat4("view",camera.view_matrix());
+            shader.setMat4("model", model);
+            shader.setMat4("view", camera.view_matrix());
             shader.setMat4("projection", camera.projection_matrix());
 
             mesh.draw();
@@ -87,10 +90,11 @@ int main()
             window_swap_buffers(window);
             window_events();
         }
-    }//ejecuta destructor de mesh
+    }
+
     window_destroy(window);
 
-    std::cout << "\n---- end combined cow example ----\n";
+    std::cout << "\n---- end combined cheburashka-taper example ----\n";
 
     return 0;
 }

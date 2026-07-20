@@ -17,9 +17,9 @@
 
 int main()
 {
-    std::cout << "\n---- deformation bulge example ----\n";
+    std::cout << "\n---- combined cow-twist example ----\n";
 
-    Window window = window_create(800, 600, "deformation bulge example");
+    Window window = window_create(800, 600, "combined cow-twist example");
 
     renderer_init();
     renderer_set_viewport(window.width, window.height);
@@ -28,14 +28,13 @@ int main()
         DATA_DIR "/vert-shader/curv-demo.vert",
         DATA_DIR "/frag-shader/curv-demo.frag"
     );
-
-    std::cout << "shader created\n";
+    
+    std::cout<<"shader created";
 
     Camera camera;
     camera.set_distance(1.5f);
-
     {
-        Mesh mesh = load_model(std::string(OFF_MODEL_DIR) + "/camelhead.off");
+        Mesh mesh = load_model(std::string(OFF_MODEL_DIR) + "/cow.off");
         std::cout << "mesh loaded\n";
         
         Eigen::VectorXf K;
@@ -44,7 +43,8 @@ int main()
         double lastX = 0.0;
         double lastY = 0.0;
 
-        while(!window_should_close(window))
+
+        while (!window_should_close(window))
         {
             double xpos, ypos;
 
@@ -61,15 +61,9 @@ int main()
                 camera.orbit(dx, dy);
             }
 
-            //-------------------------------------
-            // Bulge
-            //-------------------------------------
-
             float t = (float)glfwGetTime();
-
-            float strength = 0.40f * std::sin(t);
-
-            bulge(mesh, strength);
+            float strength = 2.0f * std::sin(t);
+            twist(mesh,strength, 0, M_PI*2.0);
 
             curvature (mesh, K);
             map_curvature_color(mesh, K);
@@ -77,16 +71,15 @@ int main()
             mesh.update_positions();
             mesh.update_colors();
 
-            //-------------------------------------
 
             renderer_clear(0.08f, 0.08f, 0.08f, 1.0f);
 
             shader.use();
-
             glm::mat4 model = glm::mat4(1.0f);
 
-            shader.setMat4("model", model);
-            shader.setMat4("view", camera.view_matrix());
+             //.vert necesita esto
+            shader.setMat4("model", model); //objeto-mundo
+            shader.setMat4("view",camera.view_matrix());
             shader.setMat4("projection", camera.projection_matrix());
 
             mesh.draw();
@@ -94,11 +87,10 @@ int main()
             window_swap_buffers(window);
             window_events();
         }
-    }
-
+    }//ejecuta destructor de mesh
     window_destroy(window);
 
-    std::cout << "\n---- end deformation bulge example ----\n";
+    std::cout << "\n---- end combined cow-twist example ----\n";
 
     return 0;
 }

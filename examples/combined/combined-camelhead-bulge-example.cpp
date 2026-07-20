@@ -17,9 +17,9 @@
 
 int main()
 {
-    std::cout << "\n---- deformation ripple example ----\n";
+    std::cout << "\n---- combined camelhead-bulge example ----\n";
 
-    Window window = window_create(800, 600, "deformation ripple example");
+    Window window = window_create(800, 600, "dcombined camelhead-bulge example ");
 
     renderer_init();
     renderer_set_viewport(window.width, window.height);
@@ -32,10 +32,10 @@ int main()
     std::cout << "shader created\n";
 
     Camera camera;
-    camera.set_distance(220.0f);
+    camera.set_distance(1.5f);
 
     {
-        Mesh mesh = load_model(std::string(OFF_MODEL_DIR) + "/fertility.off");
+        Mesh mesh = load_model(std::string(OFF_MODEL_DIR) + "/camelhead.off");
         std::cout << "mesh loaded\n";
         
         Eigen::VectorXf K;
@@ -61,18 +61,23 @@ int main()
                 camera.orbit(dx, dy);
             }
 
+            //-------------------------------------
+            // Bulge
+            //-------------------------------------
+
             float t = (float)glfwGetTime();
 
-            float amplitude = 0.15f + 80.0f * std::sin(t);
-            float frequency = 0.01f;
+            float strength = 0.40f * std::sin(t);
 
-            ripple(mesh, amplitude, frequency);
+            bulge(mesh, strength);
 
             curvature (mesh, K);
             map_curvature_color(mesh, K);
 
             mesh.update_positions();
             mesh.update_colors();
+
+            //-------------------------------------
 
             renderer_clear(0.08f, 0.08f, 0.08f, 1.0f);
 
@@ -93,7 +98,7 @@ int main()
 
     window_destroy(window);
 
-    std::cout << "\n---- end deformation ripple example ----\n";
+    std::cout << "\n---- end combined camelhead-bulge example  ----\n";
 
     return 0;
 }
