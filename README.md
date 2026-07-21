@@ -35,6 +35,10 @@ The project is organized into modular components:
 
 ```
 .
+├── scripts/
+│
+├── docs/
+│
 ├── include/
 │   ├── core/
 │   ├── render/
@@ -52,15 +56,12 @@ The project is organized into modular components:
 │
 ├── results/
 │
-├── utilities/
-│   ├── _obj-models/
-│   ├── _off-models/
-│   ├── vert-shader/
-│   └── frag-shader/
-│
-├── scripts/
-│
-└── docs/
+└── utilities/
+    ├── _obj-models/
+    ├── _off-models/
+    ├── vert-shader/
+    └── frag-shader/
+ 
 
 ```
 
@@ -70,14 +71,14 @@ The `results/` directory follows the same organization defined in `examples/`, w
 
 ### Project Overview
 
+- `scripts/`: Scripts for running the docker container on windows and linux (debian or ubuntu).
+- `docs/`: Contains the technical documentation of the project, including the initial proposal, software architecture description, environment setup instructions, and module validation procedures.
 - `include/`: Header files defining the engine modules.
 - `src/`: Source files implementing the `.h` files in `include/`.
 - `sanity/`: Tests for each module.
 - `examples/`: Example applications demonstrating curvature visualization, mesh deformation, and their interaction.
 - `results/`: Visualization results.
 - `utilities/`: External resources, such as models and shader files.
-- `docs/`: Contains the technical documentation of the project, including the initial proposal, software architecture description, environment setup instructions, and module validation procedures.
-- `scripts/`: Scripts for running the docker container on windows and linux (debian or ubuntu).
 
 See [architecture document](docs/architecture.md) for details about the engine modules in `include/` and `src/`.
 
