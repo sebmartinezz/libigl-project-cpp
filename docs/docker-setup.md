@@ -53,7 +53,7 @@ After the image is created, the project can be executed inside a Docker containe
 
 ### Windows Powershell
 
-Before launching the container, make sure that both Docker Desktop and the X server are running. The X server is required because the graphical application runs inside the Docker container, but the display is provided by the host system. Make sure you **disable access control** on [VcXsrv](https://sourceforge.net/projects/vcxsrv/).
+Before launching the container, make sure that both [Docker Desktop](https://docs.docker.com/desktop/setup/install/windows-install/) and the X server are running. The X server is required because the graphical application runs inside the Docker container, but the display is provided by the host system. Make sure you **disable access control** on [VcXsrv](https://sourceforge.net/projects/vcxsrv/).
 
 
 <div style="display:flex; gap:10px;">
