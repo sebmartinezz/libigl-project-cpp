@@ -103,4 +103,28 @@ From the project root directory run:
 ./scripts/run-linux.sh
 ```
 
+This runs a script with the following commands:
+
+- `xhost +SI:localuser:root`  gives permission to the root, allowing the root user to connect to the host's X11 server.
+
+- `xhost -SI:localuser:root` remove th permission gave to the root while the container is closed.
+
+- `docker run` creates and starts a new container from the specified Docker image.
+
+- `-it` runs the container in interactive mode with an attached terminal.
+
+- `--rm` automatically removes the container when it exits. This prevents unused stopped containers from accumulating.
+
+- `--device=/dev/dri` grants the container access to the host GPU, enabling hardware-accelerated OpenGL rendering.
+
+- `-e DISPLAY="$DISPLAY"` allows graphical applications running inside Docker (such as OpenGL programs) to communicate with the host X server.
+
+- `-v /tmp/.X11-unix:/tmp/.X11-unix` shares the host X11 Unix socket with the container, enabling communication with the X server.
+
+- `-v "$PWD:/workspace"` mounts the current host directory into the container, allowing files edited on the host machine to be directly available inside the container and vice versa:
+  - *`PWD`* refers to the current directory on the host machine.
+  - *`/workspace`* is the directory inside the container.
+
+- `libiglproj` launches the container from the libiglproj image created earlier.
+
 This should allow the docker container to run graphical applications using X11.
