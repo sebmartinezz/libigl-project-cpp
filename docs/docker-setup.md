@@ -49,7 +49,9 @@ The resulting environment contains everything required to compile and run the `O
 
 After the image is created, the project can be executed inside a Docker container with the same environment regardless of the host operating system.
 
-## Running the container on Windows PowerShell
+## Running the container
+
+### Windows Powershell
 
 Before launching the container, make sure that both Docker Desktop and the X server are running. The X server is required because the graphical application runs inside the Docker container, but the display is provided by the host system. Make sure you **disable access control** on [VcXsrv](https://sourceforge.net/projects/vcxsrv/).
 
@@ -60,22 +62,14 @@ Before launching the container, make sure that both Docker Desktop and the X ser
 </div>  
 
 
-First, obtain the IPv4 address of the machine running the X server using:
+
+To launch the docker image, from the project root directory run:
 
 ```bash
-ipconfig
-```
-Then launch the container with:
-```powershell
-docker run -it --rm -v "${PWD}:/workspace" -e DISPLAY=<IPv4>:0 libiglproj
-```
-or
-
-```bash
-docker run -it --rm -v "${PWD}:/workspace" -e DISPLAY=host.docker.internal:0 libiglproj
+.\scripts\run-windows.bat
 ```
 
-Command breakdown:
+This runs a script with the following commands:
 
 - `docker run` creates and starts a new container from the specified Docker image.
 - `-it` runs the container in interactive mode with an attached terminal.
@@ -86,10 +80,10 @@ Command breakdown:
   - *`${PWD}`* refers to the current directory on the host machine.
   - *`/workspace`* is the directory inside the container.
 
-- `-e DISPLAY=<IPv4>:0` sets the `DISPLAY` environment variable inside the container, allowing graphical applications running inside Docker (such as OpenGL programs) to communicate with the host X server.
+- `-e DISPLAY=host.docker.internal:0.0` allows graphical applications running inside Docker (such as OpenGL programs) to communicate with the host X server.
 
-- `<IPv4>` should be replaced with your actual IPv4 address, obtained before.
-- `:0` refers to the default display number.
+- `libiglproj` Launches the container from the libiglproj image created earlier.
+
 
 The complete workflow is:
 
@@ -100,3 +94,13 @@ Host machine
 -> GLFW/OpenGL application
 -> Display output
 ```
+
+### Linux (Debian or Ubuntu)
+
+From the project root directory run:
+
+```bash
+./scripts/run-linux.sh
+```
+
+This should allow the docker container to run graphical applications using X11.

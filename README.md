@@ -58,6 +58,8 @@ The project is organized into modular components:
 │   ├── vert-shader/
 │   └── frag-shader/
 │
+├── scripts/
+│
 └── docs/
 
 ```
@@ -75,6 +77,7 @@ The `results/` directory follows the same organization defined in `examples/`, w
 - `results/`: Visualization results.
 - `utilities/`: External resources, such as models and shader files.
 - `docs/`: Contains the technical documentation of the project, including the initial proposal, software architecture description, environment setup instructions, and module validation procedures.
+- `scripts/`: Scripts for running the docker container on windows and linux (debian or ubuntu).
 
 See [architecture document](docs/architecture.md) for details about the engine modules in `include/` and `src/`.
 
@@ -88,7 +91,7 @@ See [architecture document](docs/architecture.md) for details about the engine m
 
 ## Docker setup
 
-This project provides a Docker environment with all required dependencies that ensures a consistent development environment across systems. See [docker setup document](docs/docker-setup.md) for details about the Docker image and the launching of the container.
+This project provides a Docker environment with all required dependencies that ensures a consistent development environment across systems. See [docker setup document](docs/docker-setup.md) for details about the Docker image and the launching of the container with the mentioned scripts.
 
 ## Compilation and execution
 
